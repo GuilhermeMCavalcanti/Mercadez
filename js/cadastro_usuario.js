@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (response.ok) {
         mostrarToast("Cadastro realizado com sucesso! 🎉", "sucesso");
         form.reset();
-        setTimeout(() => (window.location.href = "./login.html"), 2000);
+        setTimeout(() => (window.location.href = "./login_cadastro.html"), 2000);
       } else {
         const erro = await response.json().catch(() => null);
         mostrarToast("Erro: " + (erro?.mensagem || "tente novamente."), "erro");

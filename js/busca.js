@@ -1,4 +1,3 @@
-
 const CATALOGO_DEMO = [
   { nome: "Arroz Camil 5kg",         preco: "22,90", mercado: "Supermercado Extra",    promocao: true  },
   { nome: "Arroz Tio João 5kg",      preco: "24,50", mercado: "Mercadão do Bairro",    promocao: false },
@@ -167,8 +166,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
 
-  const inputHero = document.querySelector(".busca input");
-  const btnHero   = document.querySelector(".busca button");
+  const inputHero = document.querySelector(".hero-busca input");
+  const btnHero   = document.querySelector(".hero-busca button");
   if (inputHero && btnHero) {
     btnHero.addEventListener("click", () => buscar(inputHero.value.trim()));
     inputHero.addEventListener("keypress", (e) => {
