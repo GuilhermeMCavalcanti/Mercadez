@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mercadez</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <!-- Ícone -->
+  <link rel="icon" href="./images/icons/precinho_menor.png" type="image/png">
+  <!-- Estilos globais -->
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+<div class="pagina">
+
+  <!-- ===== HEADER ===== -->
+  <header>
+
+    <!-- Top Header -->
+    <div class="top_header">
+      <nav>
+        <a href="./index.html">
+          <img src="./images/icons/precinho_menor.png" class="precinho" alt="Mercadez">
+        </a>
+        <ul class="nav-links">
+          <li><a href="./fale_conosco.html">Fale Conosco</a></li>
+          <li><a href="./sobre.html">Sobre</a></li>
+          <li><a href="./login_cadastro.html">Login</a></li>
+          <li><a href="./cadastro_afiliado.html">Seja Afiliado</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Bottom Header -->
+    <div class="bottom_header">
+      <nav>
+        <div class="menu-lateral-btn" onclick="abrirMenu()">☰</div>
+        <ul>
+          <li><a href="./comparacao.html">Ofertas</a></li>
+          <li><a href="./categorias.html">Categorias</a></li>
+        </ul>
+        <div class="pesquisa">
+          <input type="text" placeholder="Buscar...">
+        </div>
+        <ul>
+          <li><a href="./notificacoes.html">Notificações</a></li>
+          <li><a href="./listas.html">Listas</a></li>
+        </ul>
+      </nav>
+    </div>
+
+  </header>
+
+  <!-- ===== SIDEBAR ===== -->
+  <div id="menuLateral" class="menu-lateral">
+    <div class="menu-header">
+      <span onclick="fecharMenu()">✖</span>
+      <h3>Menu</h3>
+    </div>
+    <a href="./index.html">Destaques</a>
+    <a href="./login_cadastro.html">Login / Cadastro</a>
+    <a href="./fale_conosco.html">Fale Conosco</a>
+    <a href="./sobre.html">Sobre</a>
+    <a href="./cadastro_afiliado.html">Seja Afiliado</a>
+  </div>
+
+  <!-- ===== MAIN ===== -->
+  <main>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-mascote">
+          <img src="./images/icons/precinho_sem_fundo.png" alt="Mascote Mercadez">
+        </div>
+        <div class="hero-texto">
+          <h1>Mercadez<br>O mercado nota dez!</h1>
+          <div class="hero-busca">
+            <input type="text" placeholder="O que você está buscando?">
+            <button>🔍</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Atalhos -->
+    <div class="atalhos">
+      <div class="atalho">
+        <img src="./images/icons/mercado.png" alt="Ofertas">
+        <span>Ofertas</span>
+      </div>
+      <div class="atalho">
+        <img src="./images/icons/produtos.png" alt="Produtos">
+        <span>Produtos</span>
+      </div>
+      <div class="atalho">
+        <img src="./images/icons/avaliacoes.png" alt="Avaliações">
+        <span>Avaliações de Mercados</span>
+      </div>
+      <div class="atalho">
+        <img src="./images/icons/localizacoes.png" alt="Localizações">
+        <span>Localizações de Mercados</span>
+      </div>
+    </div>
+
+    <!-- Produtos em destaque -->
+    <section class="secao">
+      <h2>Produtos em destaque</h2>
+      <div class="cards">
+        <div class="card">
+          <img src="./images/icons/arroz.png" alt="Arroz">
+        </div>
+        <div class="card">
+          <img src="./images/icons/feijao.jpg" alt="Feijão">
+        </div>
+        <div class="card">
+          <img src="./images/icons/macarrao.jpg" alt="Macarrão">
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparação + Categorias -->
+    <div class="secao-dupla">
+      <section class="secao">
+        <h2>Comparações de preços</h2>
+        <div class="comparacao">
+          <div class="box">
+            <span>Filtrar mais baratos</span>
+            <strong>R$ 0,99</strong>
+          </div>
+          <div class="box">
+            <span>Filtrar mais caros</span>
+            <strong>R$ 500,00</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="secao">
+        <h2>Marcas mais vendidas</h2>
+        <ul class="categorias">
+          <li>🍎 Frutas e Verduras</li>
+          <li>🍫 Doces e Chocolates</li>
+          <li>🥩 Carnes e Peixes</li>
+          <li>🥛 Laticínios frescos</li>
+        </ul>
+      </section>
+    </div>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-nav">
+      <div>
+        <span class="footer-title">Destaques</span>
+        <ul>
+          <li><a href="./login_cadastro.html">Cadastro</a></li>
+          <li><a href="./login_cadastro.html">Login</a></li>
+          <li><a href="./comparacao.html">Comparação</a></li>
+        </ul>
+      </div>
+      <div>
+        <span class="footer-title">Mercadez</span>
+        <ul>
+          <li><a href="./sobre.html">Sobre nós</a></li>
+          <li><a href="./cadastro_afiliado.html">Seja Afiliado</a></li>
+        </ul>
+      </div>
+      <div>
+        <span class="footer-title">Entre em contato</span>
+        <a href="./fale_conosco.html">
+          <button class="btn-footer">Fale conosco</button>
+        </a>
+        <div class="logos mt-2">
+          <a href="#"><img src="./images/icons/WhatsApp.svg.png" alt="WhatsApp"></a>
+          <a href="#"><img src="./images/icons/Instagram_icon.png.webp" alt="Instagram"></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- /pagina -->
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Scripts do projeto -->
+<script src="./js/api.js"></script>
+<script src="./js/busca.js"></script>
+
+<script>
+  function abrirMenu() {
+    document.getElementById('menuLateral').classList.add('ativo');
+  }
+  function fecharMenu() {
+    document.getElementById('menuLateral').classList.remove('ativo');
+  }
+</script>
+
+</body>
+</html>

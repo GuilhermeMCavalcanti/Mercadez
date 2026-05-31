@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notificações - Mercadez</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" href="./images/icons/precinho_menor.png" type="image/png">
+</head>
+<body>
+<div class="pagina">
+
+    <header>
+        <div class="top_header">
+            <nav>
+                <a href="./index.html"><img src="./images/icons/precinho_menor.png" class="precinho"></a>
+                <ul class="cima">
+                    <li><a href="./fale_conosco.html">Fale Conosco</a></li>
+                    <li><a href="./sobre.html">Sobre</a></li>
+                    <li><a href="./login.html">Login</a></li>
+                    <li><a href="./cadastro_afiliado.html">Seja Afiliado</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="bottom_header">
+            <div class="container">
+                <nav>
+                    <div class="menu-lateral-btn" onclick="abrirMenu()">☰</div>
+                    <ul class="esquerda">
+                        <li><a href="./comparacao.html">Ofertas</a></li>
+                        <li><a href="./categorias.html">Categorias</a></li>
+                    </ul>
+                    <div class="pesquisa">
+                        <input type="text" placeholder="Buscar...">
+                    </div>
+                    <ul class="direita">
+                        <li><a href="./notificacoes.html">Notificações</a></li>
+                        <li><a href="./listas.html">Listas</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- SIDEBAR -->
+    <div id="menuLateral" class="menu-lateral">
+        <div class="menu-header">
+            <span onclick="fecharMenu()">✖</span>
+            <h3>Menu</h3>
+        </div>
+        <a href="./index.html">Destaques</a>
+        <a href="./form_cadastro.html">Cadastro</a>
+        <a href="./fale_conosco.html">Fale Conosco</a>
+        <a href="./sobre.html">Sobre</a>
+        <a href="./cadastro_afiliado.html">Seja Afiliado</a>
+    </div>
+
+    <main class="secao">
+        <h2>Notificações</h2>
+        <p>Aqui você verá todas as notificações de ofertas, promoções e novidades nos mercados que você acompanha:</p>
+        <ul>
+            <li>Oferta de produtos e alimentos;</li>
+            <li>Promoção em tempo real;</li>
+            <li>Novidade: novos mercados cadastrados na sua região;</li>
+        </ul>
+        <p>Para promoções exclusivas e em tempo real, assine o plano Premium por apenas R$9,99 por mês.</p>
+    </main>
+
+    <footer>
+        <div class="footer">
+            <nav>
+                <ul class="lista-esquerda">
+                    <li class="titulo">Destaques</li>
+                    <li><a href="./form_cadastro.html">Cadastro</a></li>
+                    <li><a href="./login.html">Login</a></li>
+                    <li><a href="./comparacao.html">Comparação</a></li>
+                </ul>
+                <ul class="centro">
+                    <li class="titulo">Mercadez</li>
+                    <li><a href="./sobre.html">Sobre nós</a></li>
+                    <li><a href="./cadastro_afiliado.html">Seja Afiliado</a></li>
+                </ul>
+                <ul class="lista-direita">
+                    <li class="titulo">Entre em contato</li>
+                    <a class="botao" href="./fale_conosco.html"><button>Fale conosco</button></a>
+                    <div class="logos">
+                        <a href="#"><img src="./images/icons/WhatsApp.svg.png" alt="whatsapp"></a>
+                        <a href="#"><img src="./images/icons/Instagram_icon.png.webp" alt="instagram"></a>
+                    </div>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+</div>
+
+<script src="./js/api.js"></script>
+<script src="./js/busca.js"></script>
+
+</body>
+</html>
