@@ -1,4 +1,4 @@
-# 🛒 Mercadez - Mercado Nota Dez
+# 🛒 Mercadez - Mercado Nota Dez!
 
 Plataforma web desenvolvida para auxiliar pequenos comerciantes e consumidores na **gestão de estoque** e **comparação de preços** de forma simples, acessível e eficiente.  
 O projeto foi criado na FATEC Ferraz de Vasconcelos.
