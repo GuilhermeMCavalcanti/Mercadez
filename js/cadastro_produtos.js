@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const afiliadoStr = sessionStorage.getItem("afiliado");
   if (!afiliadoStr) {
     mostrarToast("Faça login como afiliado primeiro.", "aviso");
-    setTimeout(() => (window.location.href = "./login.html"), 1800);
+    setTimeout(() => (window.location.href = "./login_cadastro.html"), 1800);
     return;
   }
 
