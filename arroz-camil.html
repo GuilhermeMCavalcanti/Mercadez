@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arroz Camil 5kg — Comparação de Preços | Mercadez</title>
+  <meta name="description" content="Compare o preço do Arroz Camil 5kg nos supermercados da região. Encontre o menor preço e economize!">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <!-- Ícone -->
+  <link rel="icon" href="./images/icons/precinho_menor.png" type="image/png">
+  <!-- Estilos globais -->
+  <link rel="stylesheet" href="./css/style.css">
+  <!-- Estilos de produto -->
+  <link rel="stylesheet" href="./css/produto-detalhes.css">
+</head>
+
+<body>
+<div class="pagina">
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="top_header">
+      <nav>
+        <a href="./index.html">
+          <img src="./images/icons/precinho_menor.png" class="precinho" alt="Mercadez">
+        </a>
+        <ul class="nav-links">
+          <li><a href="./fale_conosco.html">Fale Conosco</a></li>
+          <li><a href="./sobre.html">Sobre</a></li>
+          <li><a href="./login_cadastro.html">Login</a></li>
+          <li><a href="./cadastro_afiliado.html">Seja Afiliado</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="bottom_header">
+      <nav>
+        <div class="menu-lateral-btn" onclick="abrirMenu()">☰</div>
+        <ul>
+          <li><a href="./comparacao.html">Ofertas</a></li>
+          <li><a href="./categorias.html">Categorias</a></li>
+        </ul>
+        <div class="pesquisa">
+          <input type="text" placeholder="Buscar...">
+        </div>
+        <ul>
+          <li><a href="./notificacoes.html">Notificações</a></li>
+          <li><a href="./listas.html">Listas</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== SIDEBAR ===== -->
+  <div id="menuLateral" class="menu-lateral">
+    <div class="menu-header">
+      <span onclick="fecharMenu()">✖</span>
+      <h3>Menu</h3>
+    </div>
+    <a href="./index.html">Destaques</a>
+    <a href="./login_cadastro.html">Login / Cadastro</a>
+    <a href="./fale_conosco.html">Fale Conosco</a>
+    <a href="./sobre.html">Sobre</a>
+    <a href="./cadastro_afiliado.html">Seja Afiliado</a>
+  </div>
+
+  <!-- ===== BREADCRUMB ===== -->
+  <nav aria-label="Breadcrumb" class="breadcrumb-mercadez">
+    <div class="inner">
+      <a href="./index.html">Início</a>
+      <span class="sep">›</span>
+      <a href="./categorias.html">Alimentos</a>
+      <span class="sep">›</span>
+      <a href="#">Arroz</a>
+      <span class="sep">›</span>
+      <span class="atual">Arroz Camil 5kg</span>
+    </div>
+  </nav>
+
+  <!-- ===== MAIN ===== -->
+  <main>
+    <div class="produto-page">
+
+      <!-- ── HERO ── -->
+      <article class="produto-hero" aria-label="Informações do produto">
+        <div class="produto-hero__galeria">
+          <span class="badge-destaque">🔥 Promoção</span>
+          <img src="./images/icons/arroz.png" alt="Embalagem Arroz Camil 5kg" loading="lazy">
+        </div>
+        <div class="produto-hero__info">
+          <p class="produto-hero__categoria">🌾 Arroz &amp; Grãos</p>
+          <h1 class="produto-hero__nome">Arroz Camil Tipo 1<br>Longo Fino — 5kg</h1>
+          <p class="produto-hero__marca">Fabricado por <strong>Camil Alimentos S.A.</strong></p>
+
+          <div class="produto-avaliacao" aria-label="Avaliação: 4.5 de 5 estrelas">
+            <div class="estrelas" role="img">
+              <div class="estrela cheia"></div>
+              <div class="estrela cheia"></div>
+              <div class="estrela cheia"></div>
+              <div class="estrela cheia"></div>
+              <div class="estrela meia"></div>
+            </div>
+            <span class="avaliacao-nota">4.5</span>
+            <span class="avaliacao-qtd">(247 avaliações)</span>
+          </div>
+
+          <div class="produto-preco-bloco">
+            <span class="produto-preco-label">🏆 Melhor preço hoje</span>
+            <div class="produto-preco-valor"><span>R$</span> 24,99</div>
+            <p class="produto-preco-mercado">em <strong>Supermercado Super Mais</strong> · Atualizado hoje</p>
+            <span class="produto-economia">✅ Economize até R$ 6,91 em relação ao mais caro</span>
+          </div>
+
+          <div class="produto-hero__acoes">
+            <a href="#comparacao" class="btn-produto-primary">📊 Ver todos os preços</a>
+            <button class="btn-produto-secondary" onclick="adicionarLista()">♡ Salvar na lista</button>
+            <button class="btn-produto-secondary" onclick="compartilhar()">↗ Compartilhar</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── LAYOUT DUPLO ── -->
+      <div class="produto-layout">
+
+        <!-- Coluna principal -->
+        <div class="produto-col-main">
+
+          <!-- Tabela de comparação -->
+          <section class="pd-section" id="comparacao" aria-label="Comparação de preços por mercado">
+            <div class="pd-section__header">
+              <h2 class="pd-section__title">Comparação de Preços</h2>
+            </div>
+            <div class="pd-section__body" style="padding:0 0 0;">
+              <div style="overflow-x:auto;">
+                <table class="tabela-comparacao" role="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Supermercado</th>
+                      <th scope="col">Preço</th>
+                      <th scope="col">Distância</th>
+                      <th scope="col">Atualizado</th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="tc-row-melhor">
+                      <td>
+                        <span class="tc-mercado-nome">
+                          <span class="dot" style="background:#2e7d32;"></span>
+                          Supermercado Super Mais
+                        </span>
+                        <span class="tc-badge-melhor">Melhor preço</span>
+                      </td>
+                      <td><span class="tc-preco melhor">R$ 24,99</span></td>
+                      <td><span class="tc-distancia">📍 1,2 km</span></td>
+                      <td><span class="tc-data">Hoje, 08:30</span></td>
+                      <td><a href="#" class="tc-btn" aria-label="Ver Super Mais">Ver mercado</a></td>
+                    </tr>
+                    <tr>
+                      <td><span class="tc-mercado-nome"><span class="dot"></span>Mercado Bom Preço</span></td>
+                      <td><span class="tc-preco">R$ 27,49</span></td>
+                      <td><span class="tc-distancia">📍 2,4 km</span></td>
+                      <td><span class="tc-data">Ontem, 16:00</span></td>
+                      <td><a href="#" class="tc-btn" aria-label="Ver Bom Preço">Ver mercado</a></td>
+                    </tr>
+                    <tr>
+                      <td><span class="tc-mercado-nome"><span class="dot"></span>Mercado Central</span></td>
+                      <td><span class="tc-preco">R$ 29,90</span></td>
+                      <td><span class="tc-distancia">📍 3,1 km</span></td>
+                      <td><span class="tc-data">Ontem, 14:22</span></td>
+                      <td><a href="#" class="tc-btn">Ver mercado</a></td>
+                    </tr>
+                    <tr>
+                      <td><span class="tc-mercado-nome"><span class="dot"></span>Atacadão Família</span></td>
+                      <td><span class="tc-preco">R$ 30,50</span></td>
+                      <td><span class="tc-distancia">📍 5,8 km</span></td>
+                      <td><span class="tc-data">2 dias atrás</span></td>
+                      <td><a href="#" class="tc-btn">Ver mercado</a></td>
+                    </tr>
+                    <tr>
+                      <td><span class="tc-mercado-nome"><span class="dot"></span>HiperMais Atacado</span></td>
+                      <td><span class="tc-preco">R$ 31,90</span></td>
+                      <td><span class="tc-distancia">📍 7,2 km</span></td>
+                      <td><span class="tc-data">3 dias atrás</span></td>
+                      <td><a href="#" class="tc-btn">Ver mercado</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="aviso-legal" style="margin:16px 28px 20px;">⚠️ Nomes fictícios para fins demonstrativos. <a href="./sobre.html" style="color:var(--amarelo);font-weight:700;">Saiba mais</a></p>
+            </div>
+          </section>
+
+          <!-- Histórico de preços -->
+          <section class="pd-section" aria-label="Histórico de preços">
+            <div class="pd-section__header">
+              <h2 class="pd-section__title">Histórico de Preços</h2>
+            </div>
+            <div class="pd-section__body">
+              <div class="hg-legenda">
+                <div class="hg-legenda-item">
+                  <div class="hg-legenda-cor" style="background:var(--amarelo);"></div>
+                  <span>Preço médio regional</span>
+                </div>
+                <div class="hg-legenda-item">
+                  <div class="hg-legenda-cor" style="background:#2e7d32;"></div>
+                  <span>Menor preço</span>
+                </div>
+              </div>
+              <div class="hg-canvas">
+                <div class="hg-eixo-y">
+                  <span>R$ 35</span>
+                  <span>R$ 30</span>
+                  <span>R$ 25</span>
+                  <span>R$ 20</span>
+                </div>
+                <div class="hg-area">
+                  <!-- Grade horizontal -->
+                  <div class="hg-grid-line" style="top:0%;"></div>
+                  <div class="hg-grid-line" style="top:33%;"></div>
+                  <div class="hg-grid-line" style="top:66%;"></div>
+                  <div class="hg-grid-line" style="top:100%;"></div>
+                  <!-- SVG do gráfico -->
+                  <svg class="hg-svg" viewBox="0 0 700 152" preserveAspectRatio="none" aria-hidden="true">
+                    <!-- Área preenchida média -->
+                    <defs>
+                      <linearGradient id="gradMedia" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#ffa539" stop-opacity="0.3"/>
+                        <stop offset="100%" stop-color="#ffa539" stop-opacity="0.02"/>
+                      </linearGradient>
+                      <linearGradient id="gradMinimo" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#2e7d32" stop-opacity="0.2"/>
+                        <stop offset="100%" stop-color="#2e7d32" stop-opacity="0.02"/>
+                      </linearGradient>
+                    </defs>
+                    <!-- Linha média: pontos R$ 32,80 | 31,50 | 29,90 | 30,80 | 28,50 | 27,90 | 27,49 -->
+                    <!-- escala: 20=152, 35=0 → (v-20)/15 * 152 -->
+                    <polygon fill="url(#gradMedia)"
+                      points="0,55 116,71 233,86 350,77 466,104 583,109 700,114  700,152 0,152"/>
+                    <polyline fill="none" stroke="#ffa539" stroke-width="2.5" stroke-linejoin="round"
+                      points="0,55 116,71 233,86 350,77 466,104 583,109 700,114"/>
+                    <!-- Linha menor preço: 28,50 | 27,90 | 26,50 | 26,80 | 25,90 | 25,20 | 24,99 -->
+                    <polygon fill="url(#gradMinimo)"
+                      points="0,104 116,109 233,121 350,118 466,126 583,131 700,133  700,152 0,152"/>
+                    <polyline fill="none" stroke="#2e7d32" stroke-width="2.5" stroke-linejoin="round"
+                      points="0,104 116,109 233,121 350,118 466,126 583,131 700,133"/>
+                    <!-- Dots interativos -->
+                    <g class="hg-tooltip-dot">
+                      <circle cx="700" cy="133" r="5" fill="#2e7d32" stroke="#fff" stroke-width="2"/>
+                    </g>
+                    <g class="hg-tooltip-dot">
+                      <circle cx="700" cy="114" r="5" fill="#ffa539" stroke="#fff" stroke-width="2"/>
+                    </g>
+                  </svg>
+                </div>
+                <div class="hg-eixo-x">
+                  <span>Dez</span>
+                  <span>Jan</span>
+                  <span>Fev</span>
+                  <span>Mar</span>
+                  <span>Abr</span>
+                  <span>Mai</span>
+                  <span>Hoje</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Informações do produto -->
+          <section class="pd-section" aria-label="Ficha técnica do produto">
+            <div class="pd-section__header">
+              <h2 class="pd-section__title">Ficha Técnica</h2>
+            </div>
+            <div class="pd-section__body">
+              <dl class="produto-info-grid">
+                <div class="produto-info-item">
+                  <dt class="pi-label">Marca</dt>
+                  <dd class="pi-valor">Camil Alimentos</dd>
+                </div>
+                <div class="produto-info-item">
+                  <dt class="pi-label">Peso líquido</dt>
+                  <dd class="pi-valor">5 kg</dd>
+                </div>
+                <div class="produto-info-item">
+                  <dt class="pi-label">Tipo</dt>
+                  <dd class="pi-valor">Arroz Longo Fino Tipo 1</dd>
+                </div>
+                <div class="produto-info-item">
+                  <dt class="pi-label">Código de barras</dt>
+                  <dd class="pi-valor">7896006755018</dd>
+                </div>
+                <div class="produto-info-item">
+                  <dt class="pi-label">Fabricante</dt>
+                  <dd class="pi-valor">Camil Alimentos S.A.</dd>
+                </div>
+                <div class="produto-info-item">
+                  <dt class="pi-label">Origem</dt>
+                  <dd class="pi-valor">Brasil – Rio Grande do Sul</dd>
+                </div>
+                <div class="produto-info-item">
+                  <dt class="pi-label">Categoria</dt>
+                  <dd class="pi-valor">Cereais e Grãos</dd>
+                </div>
+                <div class="produto-info-item">
+                  <dt class="pi-label">Validade</dt>
+                  <dd class="pi-valor">24 meses</dd>
+                </div>
+              </dl>
+            </div>
+          </section>
+
+          <!-- Descrição -->
+          <section class="pd-section" aria-label="Descrição do produto">
+            <div class="pd-section__header">
+              <h2 class="pd-section__title">Descrição</h2>
+            </div>
+            <div class="pd-section__body produto-descricao">
+              <p>O Arroz Camil Tipo 1 Longo Fino é um dos produtos mais tradicionais e consumidos nas mesas brasileiras. Com grãos selecionados, ele oferece textura solta e sabor suave, sendo ideal para acompanhar o cardápio do dia a dia.</p>
+              <p>Cada pacote de 5 kg garante rendimento excepcional, com grãos uniformes que não empapam após o cozimento. Livre de aditivos artificiais, o produto mantém o sabor natural que o tornou referência no segmento.</p>
+              <p>A embalagem com fechamento hermético mantém os grãos protegidos da umidade e insetos, preservando a qualidade por até 24 meses em local fresco e seco.</p>
+            </div>
+          </section>
+
+          <!-- Avaliações -->
+          <section class="pd-section" aria-label="Avaliações dos consumidores">
+            <div class="pd-section__header">
+              <h2 class="pd-section__title">Avaliações dos Consumidores</h2>
+            </div>
+            <div class="pd-section__body">
+              <div class="avaliacoes-resumo">
+                <div class="av-nota-grande">
+                  <span class="numero">4.5</span>
+                  <div class="estrelas" aria-label="4.5 estrelas">
+                    <div class="estrela cheia"></div>
+                    <div class="estrela cheia"></div>
+                    <div class="estrela cheia"></div>
+                    <div class="estrela cheia"></div>
+                    <div class="estrela meia"></div>
+                  </div>
+                  <span class="texto">247 avaliações</span>
+                </div>
+                <div class="av-barras" aria-label="Distribuição de notas">
+                  <div class="av-barra-row">
+                    <span>5★</span>
+                    <div class="av-barra-track"><div class="av-barra-fill" style="width:65%"></div></div>
+                    <span>161</span>
+                  </div>
+                  <div class="av-barra-row">
+                    <span>4★</span>
+                    <div class="av-barra-track"><div class="av-barra-fill" style="width:20%"></div></div>
+                    <span>49</span>
+                  </div>
+                  <div class="av-barra-row">
+                    <span>3★</span>
+                    <div class="av-barra-track"><div class="av-barra-fill" style="width:8%"></div></div>
+                    <span>20</span>
+                  </div>
+                  <div class="av-barra-row">
+                    <span>2★</span>
+                    <div class="av-barra-track"><div class="av-barra-fill" style="width:4%"></div></div>
+                    <span>10</span>
+                  </div>
+                  <div class="av-barra-row">
+                    <span>1★</span>
+                    <div class="av-barra-track"><div class="av-barra-fill" style="width:3%"></div></div>
+                    <span>7</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Comentários -->
+              <div>
+                <article class="avaliacao-item">
+                  <div class="av-item-header">
+                    <div class="av-avatar" style="background:#f57c00;" aria-hidden="true">M</div>
+                    <div>
+                      <p class="av-nome">Maria S.</p>
+                      <div class="estrelas" aria-label="5 estrelas">
+                        <div class="estrela cheia"></div><div class="estrela cheia"></div><div class="estrela cheia"></div><div class="estrela cheia"></div><div class="estrela cheia"></div>
+                      </div>
+                    </div>
+                    <span class="av-data">12 mai. 2025</span>
+                  </div>
+                  <p class="av-comentario">Arroz excelente, grãos soltinhos e saborosos. Comprei no Super Mais pelo preço que vi aqui no Mercadez e economizei bastante! Recomendo muito.</p>
+                </article>
+
+                <article class="avaliacao-item">
+                  <div class="av-item-header">
+                    <div class="av-avatar" style="background:#1565c0;" aria-hidden="true">R</div>
+                    <div>
+                      <p class="av-nome">Roberto A.</p>
+                      <div class="estrelas" aria-label="4 estrelas">
+                        <div class="estrela cheia"></div><div class="estrela cheia"></div><div class="estrela cheia"></div><div class="estrela cheia"></div><div class="estrela"></div>
+                      </div>
+                    </div>
+                    <span class="av-data">28 abr. 2025</span>
+                  </div>
+                  <p class="av-comentario">Produto de qualidade. Sempre compro esta marca. Gostei de poder comparar os preços pela região antes de ir ao mercado.</p>
+                </article>
+
+                <article class="avaliacao-item">
+                  <div class="av-item-header">
+                    <div class="av-avatar" style="background:#6a1b9a;" aria-hidden="true">J</div>
+                    <div>
+                      <p class="av-nome">Juliana C.</p>
+                      <div class="estrelas" aria-label="5 estrelas">
+                        <div class="estrela cheia"></div><div class="estrela cheia"></div><div class="estrela cheia"></div><div class="estrela cheia"></div><div class="estrela cheia"></div>
+                      </div>
+                    </div>
+                    <span class="av-data">15 abr. 2025</span>
+                  </div>
+                  <p class="av-comentario">Arroz que não decepciona. Uso há anos. O Mercadez me ajudou a economizar R$ 5 por pacote simplesmente comparando os mercados próximos.</p>
+                </article>
+              </div>
+            </div>
+          </section>
+
+          <!-- Produtos relacionados -->
+          <section class="pd-section" aria-label="Produtos relacionados">
+            <div class="pd-section__header">
+              <h2 class="pd-section__title">Produtos Relacionados</h2>
+            </div>
+            <div class="pd-section__body">
+              <div class="relacionados-grid">
+                <a href="#" class="rel-card" aria-label="Ver Arroz Tio João 5kg">
+                  <img src="./images/icons/arroz.png" alt="Arroz Tio João">
+                  <span class="rel-card-nome">Arroz Tio João 5kg</span>
+                  <span class="rel-card-preco">R$ 26,90</span>
+                </a>
+                <a href="#" class="rel-card" aria-label="Ver Arroz Prato Fino 5kg">
+                  <img src="./images/icons/arroz.png" alt="Arroz Prato Fino">
+                  <span class="rel-card-nome">Arroz Prato Fino 5kg</span>
+                  <span class="rel-card-preco">R$ 23,80</span>
+                </a>
+                <a href="#" class="rel-card" aria-label="Ver Arroz Namorado 5kg">
+                  <img src="./images/icons/arroz.png" alt="Arroz Namorado">
+                  <span class="rel-card-nome">Arroz Namorado 5kg</span>
+                  <span class="rel-card-preco">R$ 22,50</span>
+                </a>
+              </div>
+            </div>
+          </section>
+
+        </div><!-- /col-main -->
+
+        <!-- Coluna lateral -->
+        <aside class="produto-col-side" aria-label="Informações complementares">
+
+          <!-- Estatísticas -->
+          <section class="pd-section" aria-label="Estatísticas de preço">
+            <div class="pd-section__header">
+              <h2 class="pd-section__title">Estatísticas</h2>
+            </div>
+            <div class="pd-section__body">
+              <div class="stats-grid">
+                <div class="stat-card destaque">
+                  <span class="stat-label">🏆 Menor preço</span>
+                  <span class="stat-valor">R$ 24,99</span>
+                  <span class="stat-sub">Super Mais</span>
+                </div>
+                <div class="stat-card">
+                  <span class="stat-label">📈 Maior preço</span>
+                  <span class="stat-valor">R$ 31,90</span>
+                  <span class="stat-sub">HiperMais</span>
+                </div>
+                <div class="stat-card">
+                  <span class="stat-label">📊 Preço médio</span>
+                  <span class="stat-valor">R$ 28,95</span>
+                  <span class="stat-sub">na região</span>
+                </div>
+                <div class="stat-card">
+                  <span class="stat-label">🏪 Mercados</span>
+                  <span class="stat-valor">5</span>
+                  <span class="stat-sub">monitorados</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Alerta de preço -->
+          <div class="widget widget-alerta" aria-label="Criar alerta de preço">
+            <p class="widget-title">🔔 Alerta de Preço</p>
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px;">Notifique-me quando o preço cair abaixo de:</p>
+            <input type="number" placeholder="Ex: R$ 22,00" aria-label="Preço alvo para notificação" min="0" step="0.01">
+            <input type="email" placeholder="Seu e-mail" aria-label="E-mail para notificação">
+            <button type="button" onclick="criarAlerta()">Criar Alerta Gratuito</button>
+          </div>
+
+          <!-- Mercados próximos -->
+          <div class="widget" aria-label="Mercados mais próximos">
+            <p class="widget-title">📍 Mercados Próximos</p>
+            <div class="mapa-lista">
+              <div class="mapa-item">
+                <div>
+                  <p class="mapa-item-nome">Super Mais</p>
+                  <p class="mapa-item-km">1,2 km</p>
+                </div>
+                <span class="mapa-item-preco">R$ 24,99</span>
+              </div>
+              <div class="mapa-item">
+                <div>
+                  <p class="mapa-item-nome">Bom Preço</p>
+                  <p class="mapa-item-km">2,4 km</p>
+                </div>
+                <span class="mapa-item-preco">R$ 27,49</span>
+              </div>
+              <div class="mapa-item">
+                <div>
+                  <p class="mapa-item-nome">Mercado Central</p>
+                  <p class="mapa-item-km">3,1 km</p>
+                </div>
+                <span class="mapa-item-preco">R$ 29,90</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Compartilhar -->
+          <div class="widget" aria-label="Compartilhar produto">
+            <p class="widget-title">↗ Compartilhar</p>
+            <div class="share-btns">
+              <button class="share-btn" aria-label="Compartilhar no WhatsApp">💬 WhatsApp</button>
+              <button class="share-btn" aria-label="Copiar link">🔗 Copiar link</button>
+            </div>
+          </div>
+
+        </aside>
+      </div><!-- /produto-layout -->
+    </div><!-- /produto-page -->
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-nav">
+      <div>
+        <span class="footer-title">Destaques</span>
+        <ul>
+          <li><a href="./login_cadastro.html">Cadastro</a></li>
+          <li><a href="./login_cadastro.html">Login</a></li>
+          <li><a href="./comparacao.html">Comparação</a></li>
+        </ul>
+      </div>
+      <div>
+        <span class="footer-title">Mercadez</span>
+        <ul>
+          <li><a href="./sobre.html">Sobre nós</a></li>
+          <li><a href="./cadastro_afiliado.html">Seja Afiliado</a></li>
+        </ul>
+      </div>
+      <div>
+        <span class="footer-title">Entre em contato</span>
+        <a href="./fale_conosco.html">
+          <button class="btn-footer">Fale conosco</button>
+        </a>
+        <div class="logos mt-2">
+          <a href="#"><img src="./images/icons/WhatsApp.svg.png" alt="WhatsApp"></a>
+          <a href="#"><img src="./images/icons/Instagram_icon.png.webp" alt="Instagram"></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- /pagina -->
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  function abrirMenu()  { document.getElementById('menuLateral').classList.add('ativo'); }
+  function fecharMenu() { document.getElementById('menuLateral').classList.remove('ativo'); }
+
+  function adicionarLista() {
+    alert('✅ Produto salvo na sua lista!\nFaça login para sincronizar suas listas em todos os dispositivos.');
+  }
+  function compartilhar() {
+    if (navigator.share) {
+      navigator.share({ title: 'Arroz Camil 5kg — Mercadez', url: window.location.href });
+    } else {
+      navigator.clipboard.writeText(window.location.href)
+        .then(() => alert('🔗 Link copiado para a área de transferência!'));
+    }
+  }
+  function criarAlerta() {
+    const preco = document.querySelector('.widget-alerta input[type=number]').value;
+    const email = document.querySelector('.widget-alerta input[type=email]').value;
+    if (!preco || !email) { alert('Preencha o preço alvo e o e-mail.'); return; }
+    alert(`🔔 Alerta criado!\nVocê será notificado quando o Arroz Camil 5kg ficar abaixo de R$ ${parseFloat(preco).toFixed(2)}.`);
+  }
+</script>
+</body>
+</html>

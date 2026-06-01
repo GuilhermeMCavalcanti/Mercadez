@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feijão Kicaldo 1kg — Comparação de Preços | Mercadez</title>
+  <meta name="description" content="Compare o preço do Feijão Kicaldo 1kg nos supermercados da região. Encontre o menor preço e economize!">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="./images/icons/precinho_menor.png" type="image/png">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/produto-detalhes.css">
+</head>
+
+<body>
+<div class="pagina">
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="top_header">
+      <nav>
+        <a href="./index.html">
+          <img src="./images/icons/precinho_menor.png" class="precinho" alt="Mercadez">
+        </a>
+        <ul class="nav-links">
+          <li><a href="./fale_conosco.html">Fale Conosco</a></li>
+          <li><a href="./sobre.html">Sobre</a></li>
+          <li><a href="./login_cadastro.html">Login</a></li>
+          <li><a href="./cadastro_afiliado.html">Seja Afiliado</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="bottom_header">
+      <nav>
+        <div class="menu-lateral-btn" onclick="abrirMenu()">☰</div>
+        <ul>
+          <li><a href="./comparacao.html">Ofertas</a></li>
+          <li><a href="./categorias.html">Categorias</a></li>
+        </ul>
+        <div class="pesquisa">
+          <input type="text" placeholder="Buscar...">
+        </div>
+        <ul>
+          <li><a href="./notificacoes.html">Notificações</a></li>
+          <li><a href="./listas.html">Listas</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== SIDEBAR ===== -->
+  <div id="menuLateral" class="menu-lateral">
+    <div class="menu-header">
+      <span onclick="fecharMenu()">✖</span>
+      <h3>Menu</h3>
+    </div>
+    <a href="./index.html">Destaques</a>
+    <a href="./login_cadastro.html">Login / Cadastro</a>
+    <a href="./fale_conosco.html">Fale Conosco</a>
+    <a href="./sobre.html">Sobre</a>
+    <a href="./cadastro_afiliado.html">Seja Afiliado</a>
+  </div>
+
+  <!-- ===== BREADCRUMB ===== -->
+  <nav aria-label="Breadcrumb" class="breadcrumb-mercadez">
+    <div class="inner">
+      <a href="./index.html">Início</a>
+      <span class="sep">›</span>
+      <a href="./categorias.html">Alimentos</a>
+      <span class="sep">›</span>
+      <a href="#">Feijão</a>
+      <span class="sep">›</span>
+      <span class="atual">Feijão Kicaldo 1kg</span>
+    </div>
+  </nav>
+
+  <!-- ===== MAIN ===== -->
+  <main>
+    <div class="produto-page">
+
+      <!-- ── HERO ── -->
+      <article class="produto-hero" aria-label="Informações do produto">
+        <div class="produto-hero__galeria">
+          <span class="badge-destaque">🔥 Promoção</span>
+          <img src="./images/icons/feijao.jpg" alt="Embalagem Feijão Kicaldo 1kg" loading="lazy">
+        </div>
+        <div class="produto-hero__info">
+          <p class="produto-hero__categoria">🫘 Feijão &amp; Leguminosas</p>
+          <h1 class="produto-hero__nome">Feijão Carioca Kicaldo<br>Tipo 1 — 1kg</h1>
+          <p class="produto-hero__marca">Fabricado por <strong>Kicaldo Alimentos Ltda.</strong></p>
+
+          <div class="produto-avaliacao" aria-label="Avaliação: 4.7 de 5 estrelas">
+            <div class="estrelas" role="img">
+              <div class="estrela cheia"></div>
+              <div class="estrela cheia"></div>
+              <div class="estrela cheia"></div>
+              <div class="estrela cheia"></div>
+              <div class="estrela meia"></div>
+            </div>
+            <span class="avaliacao-nota">4.7</span>
+            <span class="avaliacao-qtd">(183 avaliações)</span>
+          </div>
+
+          <div class="produto-preco-bloco">
+            <span class="produto-preco-label">🏆 Melhor preço hoje</span>
+            <div class="produto-preco-valor"><span>R$</span> 4,99</div>
+            <p class="produto-preco-mercado">em <strong>Supermercado Super Mais</strong> · Atualizado hoje</p>
+            <span class="produto-economia">✅ Economize até R$ 0,91 em relação ao mais caro</span>
+          </div>
+
+          <div class="produto-hero__acoes">
+            <a href="#comparacao" class="btn-produto-primary">📊 Ver todos os preços</a>
+            <button class="btn-produto-secondary" onclick="adicionarLista()">♡ Salvar na lista</button>
+            <button class="btn-produto-secondary" onclick="compartilhar()">↗ Compartilhar</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── LAYOUT DUPLO ── -->
+      <div class="produto-layout">
+
+        <!-- Coluna principal -->
+        <div class="produto-col-main">
+
+          <!-- Tabela de comparação -->
+          <section class="pd-section" id="comparacao" aria-label="Comparação de preços por mercado">
+            <div class="pd-section__header">
+              <h2 class="pd-section__title">Comparação de Preços</h2>
+            </div>
+            <div class="pd-section__body" style="padding:0;">
+              <div style="overflow-x:auto;">
+                <table class="tabela-comparacao" role="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Supermercado</th>
+                      <th scope="col">Preço</th>
+                      <th scope="col">Distância</th>
+                      <th scope="col">Atualizado</th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="tc-row-melhor">
+                      <td>
+                        <span class="tc-mercado-nome">
+                          <span class="dot" style="background:#2e7d32;"></span>
+                          Supermercado Super Mais
+                        </span>
+                        <span class="tc-badge-melhor">Melhor preço</span>
+                      </td>
+                      <td><span class="tc-preco melhor">R$ 4,99</span></td>
+                      <td><span class="tc-distancia">📍 1,2 km</span></td>
+                      <td><span class="tc-data">Hoje, 09:15</span></td>
+                      <td><a href="#" class="tc-btn">Ver mercado</a></td>
+                    </tr>
+                    <tr>
+                      <td><span class="tc-mercado-nome"><span class="dot"></span>Mercado Bom Preço</span></td>
+                      <td><span class="tc-preco">R$ 5,29</span></td>
+                      <td><span class="tc-distancia">📍 2,4 km</span></td>
+                      <td><span class="tc-data">Ontem, 18:00</span></td>
+                      <td><a href="#" class="tc-btn">Ver mercado</a></td>
+                    </tr>
+                    <tr>
+                      <td><span class="tc-mercado-nome"><span class="dot"></span>Mercado Central</span></td>
+                      <td><span class="tc-preco">R$ 5,50</span></td>
+                      <td><span class="tc-distancia">📍 3,1 km</span></td>
+                      <td><span class="tc-data">Ontem, 10:40</span></td>
+                      <td><a href="#" class="tc-btn">Ver mercado</a></td>
+                    </tr>
+                    <tr>
+                      <td><span class="tc-mercado-nome"><span class="dot"></span>Atacadão Família</span></td>
+                      <td><span class="tc-preco">R$ 5,69</span></td>
+                      <td><span class="tc-distancia">📍 5,8 km</span></td>
+                      <td><span class="tc-data">2 dias atrás</span></td>
+                      <td><a href="#" class="tc-btn">Ver mercado</a></td>
+                    </tr>
+                    <tr>
+                      <td><span class="tc-mercado-nome"><span class="dot"></span>HiperMais Atacado</span></td>
+                      <td><span class="tc-preco">R$ 5,90</span></td>
+                      <td><span class="tc-distancia">📍 7,2 km</span></td>
+                      <td><span class="tc-data">3 dias atrás</span></td>
+                      <td><a href="#" class="tc-btn">Ver mercado</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="aviso-legal" style="margin:16px 28px 20px;">⚠️ Nomes fictícios para fins demonstrativos. <a href="./sobre.html" style="color:var(--amarelo);font-weight:700;">Saiba mais</a></p>
+            </div>
+          </section>
+
+          <!-- Histórico de preços -->
+          <section class="pd-section" aria-label="Histórico de preços">
+            <div class="pd-section__header">
+              <h2 class="pd-section__title">Histórico de Preços</h2>
+            </div>
+            <div class="pd-section__body">
+              <div class="hg-legenda">
+                <div class="hg-legenda-item">
+                  <div class="hg-legenda-cor" style="background:var(--amarelo);"></div>
+                  <span>Preço médio regional</span>
+                </div>
+                <div class="hg-legenda-item">
+                  <div class="hg-legenda-cor" style="background:#2e7d32;"></div>
+                  <span>Menor preço</span>
+                </div>
+              </div>
+              <div class="hg-canvas">
+                <div class="hg-eixo-y">
+                  <span>R$ 8</span>
+                  <span>R$ 6,5</span>
+                  <span>R$ 5</span>
+                  <span>R$ 3,5</span>
+                </div>
+                <div class="hg-area">
+                  <div class="hg-grid-line" style="top:0%;"></div>
+                  <div class="hg-grid-line" style="top:33%;"></div>
+                  <div class="hg-grid-line" style="top:66%;"></div>
+                  <div class="hg-grid-line" style="top:100%;"></div>
+                  <svg class="hg-svg" viewBox="0 0 700 152" preserveAspectRatio="none" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="gradMedia2" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#ffa539" stop-opacity="0.3"/>
+                        <stop offset="100%" stop-color="#ffa539" stop-opacity="0.02"/>
+                      </linearGradient>
+                      <linearGradient id="gradMin2" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#2e7d32" stop-opacity="0.2"/>
+                        <stop offset="100%" stop-color="#2e7d32" stop-opacity="0.02"/>
+                      </linearGradient>
+                    </defs>
+                    <!-- escala 3.5=152, 8=0 → (v-3.5)/4.5*152 -->
+                    <!-- Média: 7.2, 6.8, 6.5, 6.2, 5.9, 5.6, 5.46 -->
+                    <polygon fill="url(#gradMedia2)"
+                      points="0,25 116,39 233,50 350,61 466,74 583,88 700,93  700,152 0,152"/>
+                    <polyline fill="none" stroke="#ffa539" stroke-width="2.5" stroke-linejoin="round"
+                      points="0,25 116,39 233,50 350,61 466,74 583,88 700,93"/>
+                    <!-- Menor: 6.2, 5.9, 5.7, 5.5, 5.3, 5.1, 4.99 -->
+                    <polygon fill="url(#gradMin2)"
+                      points="0,61 116,74 233,82 350,91 466,100 583,108 700,113  700,152 0,152"/>
+                    <polyline fill="none" stroke="#2e7d32" stroke-width="2.5" stroke-linejoin="round"
+                      points="0,61 116,74 233,82 350,91 466,100 583,108 700,113"/>
+                    <circle cx="700" cy="113" r="5" fill="#2e7d32" stroke="#fff" stroke-width="2"/>
+                    <circle cx="700" cy="93"  r="5" fill="#ffa539" stroke="#fff" stroke-width="2"/>
+                  </svg>
+                </div>
+                <div class="hg-eixo-x">
+                  <span>Dez</span><span>Jan</span><span>Fev</span><span>Mar</span><span>Abr</span><span>Mai</span><span>Hoje</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Ficha técnica -->
+          <section class="pd-section" aria-label="Ficha técnica do produto">
+            <div class="pd-section__header">
+              <h2 class="pd-section__title">Ficha Técnica</h2>
+            </div>
+            <div class="pd-section__body">
+              <dl class="produto-info-grid">
+                <div class="produto-info-item">
+                  <dt class="pi-label">Marca</dt>
+                  <dd class="pi-valor">Kicaldo Alimentos</dd>
+                </div>
+                <div class="produto-info-item">
+                  <dt class="pi-label">Peso líquido</dt>
+                  <dd class="pi-valor">1 kg</dd>
+                </div>
+                <div class="produto-info-item">
+                  <dt class="pi-label">Tipo</dt>
+                  <dd class="pi-valor">Feijão Carioca Tipo 1</dd>
+                </div>
+                <div class="produto-info-item">
+                  <dt class="pi-label">Código de barras</dt>
+                  <dd class="pi-valor">7898902310015</dd>
+                </div>
+                <div class="produto-info-item">
+                  <dt class="pi-label">Fabricante</dt>
+                  <dd class="pi-valor">Kicaldo Alimentos Ltda.</dd>
+                </div>
+                <div class="produto-info-item">
+                  <dt class="pi-label">Origem</dt>
+                  <dd class="pi-valor">Brasil – Paraná</dd>
+                </div>
+                <div class="produto-info-item">
+                  <dt class="pi-label">Categoria</dt>
+                  <dd class="pi-valor">Leguminosas e Grãos</dd>
+                </div>
+                <div class="produto-info-item">
+                  <dt class="pi-label">Validade</dt>
+                  <dd class="pi-valor">18 meses</dd>
+                </div>
+              </dl>
+            </div>
+          </section>
+
+          <!-- Descrição -->
+          <section class="pd-section" aria-label="Descrição do produto">
+            <div class="pd-section__header">
+              <h2 class="pd-section__title">Descrição</h2>
+            </div>
+            <div class="pd-section__body produto-descricao">
+              <p>O Feijão Carioca Kicaldo Tipo 1 é selecionado rigorosamente para garantir grãos de qualidade superior, com baixo teor de impurezas e alta uniformidade no tamanho. É o feijão que vai ao fogo rápido e oferece um caldo encorpado e saboroso.</p>
+              <p>Cultivado nas melhores regiões produtoras do Brasil, o Kicaldo mantém um padrão nutricional elevado, sendo rico em proteínas, fibras e ferro — componentes essenciais para uma alimentação equilibrada.</p>
+              <p>Ideal para o tradicional feijão com arroz brasileiro, sopas, feijoadas e receitas diversas. A embalagem de 1kg é prática para famílias de qualquer tamanho.</p>
+            </div>
+          </section>
+
+          <!-- Avaliações -->
+          <section class="pd-section" aria-label="Avaliações dos consumidores">
+            <div class="pd-section__header">
+              <h2 class="pd-section__title">Avaliações dos Consumidores</h2>
+            </div>
+            <div class="pd-section__body">
+              <div class="avaliacoes-resumo">
+                <div class="av-nota-grande">
+                  <span class="numero">4.7</span>
+                  <div class="estrelas" aria-label="4.7 estrelas">
+                    <div class="estrela cheia"></div>
+                    <div class="estrela cheia"></div>
+                    <div class="estrela cheia"></div>
+                    <div class="estrela cheia"></div>
+                    <div class="estrela meia"></div>
+                  </div>
+                  <span class="texto">183 avaliações</span>
+                </div>
+                <div class="av-barras">
+                  <div class="av-barra-row"><span>5★</span><div class="av-barra-track"><div class="av-barra-fill" style="width:72%"></div></div><span>132</span></div>
+                  <div class="av-barra-row"><span>4★</span><div class="av-barra-track"><div class="av-barra-fill" style="width:18%"></div></div><span>33</span></div>
+                  <div class="av-barra-row"><span>3★</span><div class="av-barra-track"><div class="av-barra-fill" style="width:6%"></div></div><span>11</span></div>
+                  <div class="av-barra-row"><span>2★</span><div class="av-barra-track"><div class="av-barra-fill" style="width:3%"></div></div><span>5</span></div>
+                  <div class="av-barra-row"><span>1★</span><div class="av-barra-track"><div class="av-barra-fill" style="width:1%"></div></div><span>2</span></div>
+                </div>
+              </div>
+
+              <div>
+                <article class="avaliacao-item">
+                  <div class="av-item-header">
+                    <div class="av-avatar" style="background:#c62828;" aria-hidden="true">A</div>
+                    <div>
+                      <p class="av-nome">Ana P.</p>
+                      <div class="estrelas" aria-label="5 estrelas">
+                        <div class="estrela cheia"></div><div class="estrela cheia"></div><div class="estrela cheia"></div><div class="estrela cheia"></div><div class="estrela cheia"></div>
+                      </div>
+                    </div>
+                    <span class="av-data">18 mai. 2025</span>
+                  </div>
+                  <p class="av-comentario">Feijão de excelente qualidade! Coze rápido e fica com um caldinho muito gostoso. Preço ótimo, encontrei no Super Mais graças ao Mercadez.</p>
+                </article>
+                <article class="avaliacao-item">
+                  <div class="av-item-header">
+                    <div class="av-avatar" style="background:#00695c;" aria-hidden="true">C</div>
+                    <div>
+                      <p class="av-nome">Carlos F.</p>
+                      <div class="estrelas" aria-label="5 estrelas">
+                        <div class="estrela cheia"></div><div class="estrela cheia"></div><div class="estrela cheia"></div><div class="estrela cheia"></div><div class="estrela cheia"></div>
+                      </div>
+                    </div>
+                    <span class="av-data">05 mai. 2025</span>
+                  </div>
+                  <p class="av-comentario">Sempre compro o Kicaldo. A diferença de qualidade dos grãos é perceptível. Com o Mercadez fico sabendo quando cai de preço perto de casa.</p>
+                </article>
+                <article class="avaliacao-item">
+                  <div class="av-item-header">
+                    <div class="av-avatar" style="background:#4527a0;" aria-hidden="true">L</div>
+                    <div>
+                      <p class="av-nome">Luana B.</p>
+                      <div class="estrelas" aria-label="4 estrelas">
+                        <div class="estrela cheia"></div><div class="estrela cheia"></div><div class="estrela cheia"></div><div class="estrela cheia"></div><div class="estrela"></div>
+                      </div>
+                    </div>
+                    <span class="av-data">22 abr. 2025</span>
+                  </div>
+                  <p class="av-comentario">Bom produto. Às vezes vem com algum grão partido mas a maioria fica ótima. Vale pelo preço quando está em promoção.</p>
+                </article>
+              </div>
+            </div>
+          </section>
+
+          <!-- Relacionados -->
+          <section class="pd-section" aria-label="Produtos relacionados">
+            <div class="pd-section__header">
+              <h2 class="pd-section__title">Produtos Relacionados</h2>
+            </div>
+            <div class="pd-section__body">
+              <div class="relacionados-grid">
+                <a href="#" class="rel-card" aria-label="Ver Feijão Carioca Camil 1kg">
+                  <img src="./images/icons/feijao.jpg" alt="Feijão Camil">
+                  <span class="rel-card-nome">Feijão Camil 1kg</span>
+                  <span class="rel-card-preco">R$ 5,49</span>
+                </a>
+                <a href="#" class="rel-card" aria-label="Ver Feijão Preto Tio João 1kg">
+                  <img src="./images/icons/feijao.jpg" alt="Feijão Preto Tio João">
+                  <span class="rel-card-nome">Feijão Preto Tio João 1kg</span>
+                  <span class="rel-card-preco">R$ 6,99</span>
+                </a>
+                <a href="#" class="rel-card" aria-label="Ver Lentilha Yoki 500g">
+                  <img src="./images/icons/feijao.jpg" alt="Lentilha">
+                  <span class="rel-card-nome">Lentilha Yoki 500g</span>
+                  <span class="rel-card-preco">R$ 4,29</span>
+                </a>
+              </div>
+            </div>
+          </section>
+
+        </div><!-- /col-main -->
+
+        <!-- Coluna lateral -->
+        <aside class="produto-col-side" aria-label="Informações complementares">
+
+          <section class="pd-section" aria-label="Estatísticas de preço">
+            <div class="pd-section__header">
+              <h2 class="pd-section__title">Estatísticas</h2>
+            </div>
+            <div class="pd-section__body">
+              <div class="stats-grid">
+                <div class="stat-card destaque">
+                  <span class="stat-label">🏆 Menor preço</span>
+                  <span class="stat-valor">R$ 4,99</span>
+                  <span class="stat-sub">Super Mais</span>
+                </div>
+                <div class="stat-card">
+                  <span class="stat-label">📈 Maior preço</span>
+                  <span class="stat-valor">R$ 5,90</span>
+                  <span class="stat-sub">HiperMais</span>
+                </div>
+                <div class="stat-card">
+                  <span class="stat-label">📊 Preço médio</span>
+                  <span class="stat-valor">R$ 5,47</span>
+                  <span class="stat-sub">na região</span>
+                </div>
+                <div class="stat-card">
+                  <span class="stat-label">🏪 Mercados</span>
+                  <span class="stat-valor">5</span>
+                  <span class="stat-sub">monitorados</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <div class="widget widget-alerta" aria-label="Criar alerta de preço">
+            <p class="widget-title">🔔 Alerta de Preço</p>
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px;">Notifique-me quando o preço cair abaixo de:</p>
+            <input type="number" placeholder="Ex: R$ 4,50" aria-label="Preço alvo para notificação" min="0" step="0.01">
+            <input type="email" placeholder="Seu e-mail" aria-label="E-mail para notificação">
+            <button type="button" onclick="criarAlerta()">Criar Alerta Gratuito</button>
+          </div>
+
+          <div class="widget" aria-label="Mercados mais próximos">
+            <p class="widget-title">📍 Mercados Próximos</p>
+            <div class="mapa-lista">
+              <div class="mapa-item">
+                <div><p class="mapa-item-nome">Super Mais</p><p class="mapa-item-km">1,2 km</p></div>
+                <span class="mapa-item-preco">R$ 4,99</span>
+              </div>
+              <div class="mapa-item">
+                <div><p class="mapa-item-nome">Bom Preço</p><p class="mapa-item-km">2,4 km</p></div>
+                <span class="mapa-item-preco">R$ 5,29</span>
+              </div>
+              <div class="mapa-item">
+                <div><p class="mapa-item-nome">Mercado Central</p><p class="mapa-item-km">3,1 km</p></div>
+                <span class="mapa-item-preco">R$ 5,50</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="widget">
+            <p class="widget-title">↗ Compartilhar</p>
+            <div class="share-btns">
+              <button class="share-btn" aria-label="Compartilhar no WhatsApp">💬 WhatsApp</button>
+              <button class="share-btn" aria-label="Copiar link">🔗 Copiar link</button>
+            </div>
+          </div>
+
+        </aside>
+      </div><!-- /produto-layout -->
+    </div><!-- /produto-page -->
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-nav">
+      <div>
+        <span class="footer-title">Destaques</span>
+        <ul>
+          <li><a href="./login_cadastro.html">Cadastro</a></li>
+          <li><a href="./login_cadastro.html">Login</a></li>
+          <li><a href="./comparacao.html">Comparação</a></li>
+        </ul>
+      </div>
+      <div>
+        <span class="footer-title">Mercadez</span>
+        <ul>
+          <li><a href="./sobre.html">Sobre nós</a></li>
+          <li><a href="./cadastro_afiliado.html">Seja Afiliado</a></li>
+        </ul>
+      </div>
+      <div>
+        <span class="footer-title">Entre em contato</span>
+        <a href="./fale_conosco.html">
+          <button class="btn-footer">Fale conosco</button>
+        </a>
+        <div class="logos mt-2">
+          <a href="#"><img src="./images/icons/WhatsApp.svg.png" alt="WhatsApp"></a>
+          <a href="#"><img src="./images/icons/Instagram_icon.png.webp" alt="Instagram"></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- /pagina -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  function abrirMenu()  { document.getElementById('menuLateral').classList.add('ativo'); }
+  function fecharMenu() { document.getElementById('menuLateral').classList.remove('ativo'); }
+  function adicionarLista() { alert('✅ Produto salvo na sua lista!'); }
+  function compartilhar() {
+    if (navigator.share) { navigator.share({ title: 'Feijão Kicaldo 1kg — Mercadez', url: window.location.href }); }
+    else { navigator.clipboard.writeText(window.location.href).then(() => alert('🔗 Link copiado!')); }
+  }
+  function criarAlerta() {
+    const preco = document.querySelector('.widget-alerta input[type=number]').value;
+    const email = document.querySelector('.widget-alerta input[type=email]').value;
+    if (!preco || !email) { alert('Preencha o preço alvo e o e-mail.'); return; }
+    alert(`🔔 Alerta criado! Você será notificado quando o Feijão Kicaldo 1kg ficar abaixo de R$ ${parseFloat(preco).toFixed(2)}.`);
+  }
+</script>
+</body>
+</html>
