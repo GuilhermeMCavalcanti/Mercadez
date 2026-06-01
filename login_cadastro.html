@@ -13,6 +13,25 @@
   <link rel="icon" href="./images/icons/precinho_menor.png" type="image/png">
   <!-- Estilos globais -->
   <link rel="stylesheet" href="./css/style.css">
+
+  <style>
+    /* Feedback de validação inline */
+    .field-error {
+      display: none;
+      color: #dc3545;
+      font-size: 0.8rem;
+      margin-top: 4px;
+    }
+    .field-error.visible {
+      display: block;
+    }
+    input.is-invalid {
+      border-color: #dc3545;
+    }
+    input.is-valid {
+      border-color: #198754;
+    }
+  </style>
 </head>
 
 <body>
@@ -85,15 +104,39 @@
           <h2>Login</h2>
           <p class="subtitle">Acesse sua conta no Mercadez.</p>
 
+          <!-- IDs prefixados com "login-" para garantir unicidade -->
           <form id="formLogin" novalidate>
+
             <div class="mb-3">
-              <label for="email_user" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email_user" placeholder="seu@email.com" required>
+              <label for="login-email" class="form-label">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="login-email"
+                name="login-email"
+                placeholder="seu@email.com"
+                autocomplete="email"
+                aria-describedby="login-email-error"
+                required
+              >
+              <span id="login-email-error" class="field-error" role="alert"></span>
             </div>
+
             <div class="mb-4">
-              <label for="senha_user" class="form-label">Senha</label>
-              <input type="password" class="form-control" id="senha_user" placeholder="••••••••" required>
+              <label for="login-senha" class="form-label">Senha</label>
+              <input
+                type="password"
+                class="form-control"
+                id="login-senha"
+                name="login-senha"
+                placeholder="••••••••"
+                autocomplete="current-password"
+                aria-describedby="login-senha-error"
+                required
+              >
+              <span id="login-senha-error" class="field-error" role="alert"></span>
             </div>
+
             <button type="submit" class="btn-mercadez btn-amarelo">Entrar</button>
           </form>
         </div>
@@ -107,23 +150,70 @@
           <h2>Cadastro</h2>
           <p class="subtitle">Crie uma conta para acessar o Mercadez.</p>
 
+          <!-- IDs prefixados com "cadastro-" para garantir unicidade -->
           <form id="formCadastro" novalidate>
+
             <div class="mb-3">
-              <label for="name_user" class="form-label">Nome de usuário</label>
-              <input type="text" class="form-control" id="name_user" placeholder="Informe seu nome" required>
+              <label for="cadastro-nome" class="form-label">Nome de usuário</label>
+              <input
+                type="text"
+                class="form-control"
+                id="cadastro-nome"
+                name="cadastro-nome"
+                placeholder="Informe seu nome"
+                autocomplete="name"
+                aria-describedby="cadastro-nome-error"
+                required
+              >
+              <span id="cadastro-nome-error" class="field-error" role="alert"></span>
             </div>
+
             <div class="mb-3">
-              <label for="email_user" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email_user" placeholder="seu@email.com" required>
+              <label for="cadastro-email" class="form-label">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="cadastro-email"
+                name="cadastro-email"
+                placeholder="seu@email.com"
+                autocomplete="email"
+                aria-describedby="cadastro-email-error"
+                required
+              >
+              <span id="cadastro-email-error" class="field-error" role="alert"></span>
             </div>
+
             <div class="mb-3">
-              <label for="cpf_user" class="form-label">CPF</label>
-              <input type="text" class="form-control" id="cpf_user" placeholder="000.000.000-00" required>
+              <label for="cadastro-cpf" class="form-label">CPF</label>
+              <input
+                type="text"
+                class="form-control"
+                id="cadastro-cpf"
+                name="cadastro-cpf"
+                placeholder="000.000.000-00"
+                inputmode="numeric"
+                maxlength="14"
+                aria-describedby="cadastro-cpf-error"
+                required
+              >
+              <span id="cadastro-cpf-error" class="field-error" role="alert"></span>
             </div>
+
             <div class="mb-4">
-              <label for="senha_user" class="form-label">Senha</label>
-              <input type="password" class="form-control" id="senha_user" placeholder="••••••••" required>
+              <label for="cadastro-senha" class="form-label">Senha</label>
+              <input
+                type="password"
+                class="form-control"
+                id="cadastro-senha"
+                name="cadastro-senha"
+                placeholder="••••••••"
+                autocomplete="new-password"
+                aria-describedby="cadastro-senha-error"
+                required
+              >
+              <span id="cadastro-senha-error" class="field-error" role="alert"></span>
             </div>
+
             <button type="submit" class="btn-mercadez btn-amarelo">Cadastrar</button>
           </form>
         </div>
