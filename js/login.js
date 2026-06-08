@@ -1,173 +1,180 @@
-// =============================================================
-// LOGIN - login_cadastro.html
-// Form ID : #formLogin
-// Input IDs: #login-email, #login-senha  (prefixed to be unique)
-// Endpoints: POST /usuarios/login  →  POST /afiliados/login
-// =============================================================
+/**
+ * login.js — Mercadez
+ *
+ * Fluxo:
+ *  1. Usuário submete o formulário de login.
+ *  2. POST /usuarios/login  → recebe { token, tipo, id, nome, email, ... }
+ *  3. GET  /usuarios/me     → recebe { id, nome, email, cpf, criadoEm, ... }
+ *  4. Salva objeto completo em localStorage com a chave "usuarioLogado".
+ *  5. Redireciona para perfil.html.
+ */
 
-(() => {
+(function () {
   'use strict';
 
-  // ─── Utility helpers ────────────────────────────────────────
+  /* ── Configuração ── */
+  const API_BASE = 'http://localhost:8080';
 
-  /**
-   *
-   * @param {HTMLInputElement} input
-   * @param {string} message
-   */
-  function setInvalid(input, message) {
-    input.classList.add('is-invalid');
-    input.classList.remove('is-valid');
-    input.setAttribute('aria-invalid', 'true');
+  /* ── Utilitários de UI ── */
 
-    const errorEl = document.getElementById(`${input.id}-error`);
-    if (errorEl) {
-      errorEl.textContent = message;
-      errorEl.classList.add('visible');
-    }
+  function setFieldError(inputEl, errorEl, msg) {
+    inputEl.classList.remove('is-valid');
+    inputEl.classList.add('is-invalid');
+    errorEl.textContent = msg;
+    errorEl.classList.add('visible');
   }
 
-  /**
-   *
-   * @param {HTMLInputElement} input
-   */
-  function setValid(input) {
-    input.classList.remove('is-invalid');
-    input.classList.add('is-valid');
-    input.setAttribute('aria-invalid', 'false');
-
-    const errorEl = document.getElementById(`${input.id}-error`);
-    if (errorEl) {
-      errorEl.textContent = '';
-      errorEl.classList.remove('visible');
-    }
+  function clearFieldError(inputEl, errorEl) {
+    inputEl.classList.remove('is-invalid');
+    inputEl.classList.add('is-valid');
+    errorEl.textContent = '';
+    errorEl.classList.remove('visible');
   }
 
-  function clearValidation(form) {
-    form.querySelectorAll('input').forEach((input) => {
-      input.classList.remove('is-invalid', 'is-valid');
-      input.removeAttribute('aria-invalid');
-      const errorEl = document.getElementById(`${input.id}-error`);
-      if (errorEl) {
-        errorEl.textContent = '';
-        errorEl.classList.remove('visible');
-      }
+  function clearAllErrors(form) {
+    form.querySelectorAll('input').forEach(function (inp) {
+      inp.classList.remove('is-invalid', 'is-valid');
+    });
+    form.querySelectorAll('.field-error').forEach(function (el) {
+      el.textContent = '';
+      el.classList.remove('visible');
     });
   }
 
-  // ─── Validation rules ───────────────────────────────────────
-
-  const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  /**
-   *
-   * @param {HTMLInputElement} emailInput
-   * @param {HTMLInputElement} senhaInput
-   * @returns {boolean}
-   */
-  function validateLoginForm(emailInput, senhaInput) {
-    let isValid = true;
-
-    // E-mail
-    if (!emailInput.value.trim()) {
-      setInvalid(emailInput, 'O e-mail é obrigatório.');
-      isValid = false;
-    } else if (!EMAIL_REGEX.test(emailInput.value.trim())) {
-      setInvalid(emailInput, 'Informe um e-mail válido.');
-      isValid = false;
-    } else {
-      setValid(emailInput);
-    }
-
-    // Senha
-    if (!senhaInput.value) {
-      setInvalid(senhaInput, 'A senha é obrigatória.');
-      isValid = false;
-    } else {
-      setValid(senhaInput);
-    }
-
-    return isValid;
+  function setSubmitLoading(btn, loading) {
+    btn.disabled = loading;
+    btn.textContent = loading ? 'Entrando…' : 'Entrar';
   }
 
-  // ─── Bootstrap ──────────────────────────────────────────────
+  /* ── Validação básica dos campos ── */
 
-  document.addEventListener('DOMContentLoaded', () => {
+  function validarFormLogin(emailEl, senhaEl) {
+    const emailErr = document.getElementById('login-email-error');
+    const senhaErr = document.getElementById('login-senha-error');
+    let ok = true;
+
+    if (!emailEl.value.trim()) {
+      setFieldError(emailEl, emailErr, 'Informe o e-mail.');
+      ok = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value.trim())) {
+      setFieldError(emailEl, emailErr, 'E-mail inválido.');
+      ok = false;
+    } else {
+      clearFieldError(emailEl, emailErr);
+    }
+
+    if (!senhaEl.value) {
+      setFieldError(senhaEl, senhaErr, 'Informe a senha.');
+      ok = false;
+    } else {
+      clearFieldError(senhaEl, senhaErr);
+    }
+
+    return ok;
+  }
+
+  /* ── Requisições ao backend ── */
+
+  async function postLogin(email, senha) {
+    const res = await fetch(API_BASE + '/usuarios/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, senha: senha }),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      // O backend retorna { mensagem: "..." } nos erros
+      const msg = data.mensagem || 'Credenciais inválidas.';
+      throw new Error(msg);
+    }
+
+    return data; // { token, tipo, perfil, id, nome, email }
+  }
+
+  async function getMe(token) {
+    const res = await fetch(API_BASE + '/usuarios/me', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token,
+      },
+    });
+
+    if (!res.ok) {
+      // Falha silenciosa: retorna null e usaremos só os dados do login
+      return null;
+    }
+
+    return await res.json(); // { id, nome, email, cpf, criadoEm, perfil }
+  }
+
+  /* ── Handler principal do formulário ── */
+
+  async function handleLogin(e) {
+    e.preventDefault();
+
+    const form    = document.getElementById('formLogin');
+    const emailEl = document.getElementById('login-email');
+    const senhaEl = document.getElementById('login-senha');
+    const btnEl   = form.querySelector('[type="submit"]');
+
+    clearAllErrors(form);
+
+    if (!validarFormLogin(emailEl, senhaEl)) return;
+
+    setSubmitLoading(btnEl, true);
+
+    try {
+      /* 1. Autenticar */
+      const loginData = await postLogin(emailEl.value.trim(), senhaEl.value);
+
+      /* 2. Buscar dados completos (cpf, criadoEm) */
+      const meData = await getMe(loginData.token);
+
+      /* 3. Montar objeto compatível com perfil.html */
+      const usuario = {
+        id:           meData ? meData.id           : loginData.id,
+        nome:         meData ? meData.nome          : loginData.nome,
+        email:        meData ? meData.email         : loginData.email,
+        cpf:          meData ? meData.cpf           : null,
+        perfil:       meData ? meData.perfil        : loginData.perfil,
+        dataCadastro: meData ? meData.criadoEm      : null,
+        token:        loginData.token,
+        tokenTipo:    loginData.tipo,
+      };
+
+      /* 4. Persistir no localStorage */
+      localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
+
+      /* 5. Redirecionar para o perfil */
+      window.location.href = './perfil.html';
+
+    } catch (err) {
+      /* Erros de credenciais ou de rede */
+      const emailErr = document.getElementById('login-email-error');
+      const senhaErr = document.getElementById('login-senha-error');
+
+      const msg = err.message || 'Não foi possível conectar ao servidor.';
+
+      // Mensagens de credenciais → exibe no campo senha
+      if (/credencial|senha|e-mail|email|inválid/i.test(msg)) {
+        setFieldError(senhaEl, senhaErr, msg);
+      } else {
+        // Erros genéricos (rede, servidor) → exibe no campo email
+        setFieldError(emailEl, emailErr, msg);
+      }
+    } finally {
+      setSubmitLoading(btnEl, false);
+    }
+  }
+
+  /* ── Inicialização ── */
+
+  document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('formLogin');
-    if (!form) return; // Script may be loaded on other pages — do nothing.
-
-    // Scoped references using the unique prefixed IDs from login_cadastro.html
-    const emailInput = form.querySelector('#login-email');
-    const senhaInput = form.querySelector('#login-senha');
-
-    // Clear field-level errors while the user types
-    [emailInput, senhaInput].forEach((input) => {
-      input.addEventListener('input', () => {
-        input.classList.remove('is-invalid', 'is-valid');
-        input.removeAttribute('aria-invalid');
-        const errorEl = document.getElementById(`${input.id}-error`);
-        if (errorEl) {
-          errorEl.textContent = '';
-          errorEl.classList.remove('visible');
-        }
-      });
-    });
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      clearValidation(form);
-
-      if (!validateLoginForm(emailInput, senhaInput)) return;
-
-      const email = emailInput.value.trim();
-      const senha = senhaInput.value;
-
-      const btnSubmit = form.querySelector("button[type='submit']");
-      btnSubmit.disabled = true;
-      btnSubmit.textContent = 'Entrando...';
-
-      try {
-        // 1. Try login as regular user
-        let response = await fetch(`${API_URL}/usuarios/login`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, senha }),
-        });
-
-        if (response.ok) {
-          const usuario = await response.json();
-          sessionStorage.setItem('usuario', JSON.stringify(usuario));
-          sessionStorage.setItem('tipoLogin', 'usuario');
-          mostrarToast(`Bem-vindo, ${usuario.nome}! ✅`, 'sucesso');
-          setTimeout(() => (window.location.href = './index.html'), 1500);
-          return;
-        }
-
-        // 2. Fallback: try login as affiliate
-        response = await fetch(`${API_URL}/afiliados/login`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, senha }),
-        });
-
-        if (response.ok) {
-          const afiliado = await response.json();
-          sessionStorage.setItem('afiliado', JSON.stringify(afiliado));
-          sessionStorage.setItem('tipoLogin', 'afiliado');
-          mostrarToast(`Bem-vindo, ${afiliado.nome}! ✅`, 'sucesso');
-          setTimeout(() => (window.location.href = './cadastro_produtos.html'), 1500);
-          return;
-        }
-
-        mostrarToast('E-mail ou senha incorretos.', 'erro');
-      } catch (err) {
-        mostrarToast('Não foi possível conectar ao servidor.', 'erro');
-        console.error('[Login]', err);
-      } finally {
-        btnSubmit.disabled = false;
-        btnSubmit.textContent = 'Entrar';
-      }
-    });
+    if (!form) return;
+    form.addEventListener('submit', handleLogin);
   });
 })();
