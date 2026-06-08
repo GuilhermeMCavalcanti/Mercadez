@@ -411,11 +411,11 @@
   function carregarPerfil() {
     const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || 'null');
 
-    if (!usuario) {
-      // Não está logado, redireciona para login
-      window.location.href = './login_cadastro.html';
-      return;
-    }
+    // if (!usuario) {
+    //   // Não está logado, redireciona para login
+    //   window.location.href = './login_cadastro.html';
+    //   return;
+    // }
 
     const nome  = usuario.nome  || usuario.name  || 'Usuário';
     const email = usuario.email || '—';
