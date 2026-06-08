@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Perfil – Mercadez</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="./images/icons/precinho_menor.png" type="image/png">
+  <link rel="stylesheet" href="./css/style.css">
+
+  <style>
+    /* ── Avatar ── */
+    .perfil-avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--amarelo), #ff7a00);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      font-weight: 800;
+      color: #fff;
+      flex-shrink: 0;
+      box-shadow: 0 4px 16px rgba(255,165,57,.35);
+    }
+
+    /* ── Hero do perfil ── */
+    .perfil-hero {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: var(--shadow-card);
+      padding: 32px 36px;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .perfil-hero-info h2 {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--dark);
+      margin: 0 0 4px;
+    }
+
+    .perfil-hero-info p {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .perfil-badge {
+      background: linear-gradient(135deg, #fff8ee, #ffecc8);
+      border: 1px solid #ffd280;
+      color: #c96a00;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-top: 8px;
+    }
+
+    /* ── Seção de cards ── */
+    .perfil-section-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--dark);
+      margin: 0 0 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .perfil-section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #eee;
+    }
+
+    /* ── Card info ── */
+    .info-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: var(--shadow-card);
+      padding: 28px 32px;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      border-bottom: 1px solid #f5f5f5;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .info-row:last-child { border-bottom: none; }
+
+    .info-row-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .6px;
+      color: var(--text-muted);
+      min-width: 120px;
+    }
+
+    .info-row-value {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--dark);
+      flex: 1;
+    }
+
+    /* ── Ações rápidas ── */
+    .acoes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .acao-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: var(--shadow-card);
+      padding: 22px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--dark);
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+    }
+
+    .acao-card:hover {
+      border-color: var(--amarelo);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,.1);
+      color: var(--dark);
+    }
+
+    .acao-icon {
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .acao-label {
+      font-size: 13px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    /* ── Listas salvas ── */
+    .lista-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,.06);
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .lista-item-nome {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .lista-item-meta {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .lista-item-tag {
+      background: #f0f0f0;
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #555;
+      white-space: nowrap;
+    }
+
+    /* ── Botão sair ── */
+    .btn-sair {
+      background: transparent;
+      border: 1.5px solid #ddd;
+      color: #888;
+      border-radius: 8px;
+      padding: 9px 22px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-color .2s, color .2s;
+    }
+
+    .btn-sair:hover {
+      border-color: #e53935;
+      color: #e53935;
+    }
+
+    /* ── Responsivo ── */
+    @media (max-width: 640px) {
+      .acoes-grid { grid-template-columns: repeat(2, 1fr); }
+      .perfil-hero { padding: 24px 20px; }
+      .info-card { padding: 20px; }
+    }
+  </style>
+</head>
+
+<body>
+<div class="pagina d-flex flex-column min-vh-100">
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="top_header">
+      <nav>
+        <a href="./index.html">
+          <img src="./images/icons/precinho_menor.png" class="precinho" alt="Mercadez">
+        </a>
+        <ul class="nav-links">
+          <li><a href="./fale_conosco.html">Fale Conosco</a></li>
+          <li><a href="./sobre.html">Sobre</a></li>
+          <li><a href="./perfil.html" style="color: var(--amarelo);">Meu Perfil</a></li>
+          <li><a href="./cadastro_afiliado.html">Seja Afiliado</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="bottom_header">
+      <nav>
+        <div class="menu-lateral-btn" onclick="abrirMenu()">☰</div>
+        <ul>
+          <li><a href="./comparacao.html">Ofertas</a></li>
+          <li><a href="./categorias.html">Categorias</a></li>
+        </ul>
+        <div class="pesquisa">
+          <input type="text" placeholder="Buscar...">
+        </div>
+        <ul>
+          <li><a href="./notificacoes.html">Notificações</a></li>
+          <li><a href="./listas.html">Listas</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== SIDEBAR ===== -->
+  <div id="menuLateral" class="menu-lateral">
+    <div class="menu-header">
+      <span onclick="fecharMenu()">✖</span>
+      <h3>Menu</h3>
+    </div>
+    <a href="./index.html">Destaques</a>
+    <a href="./perfil.html">Meu Perfil</a>
+    <a href="./fale_conosco.html">Fale Conosco</a>
+    <a href="./sobre.html">Sobre</a>
+    <a href="./cadastro_afiliado.html">Seja Afiliado</a>
+  </div>
+
+  <!-- ===== MAIN ===== -->
+  <main class="flex-grow-1" style="padding: 40px 20px 60px;">
+    <div style="max-width: 860px; margin: 0 auto;">
+
+      <!-- Hero do perfil -->
+      <div class="perfil-hero mb-4">
+        <div class="perfil-avatar" id="avatarInicial">?</div>
+        <div class="perfil-hero-info">
+          <h2 id="nomeUsuario">Carregando...</h2>
+          <p id="emailUsuario">—</p>
+          <span class="perfil-badge">✦ Membro Mercadez</span>
+        </div>
+        <div class="ms-auto">
+          <button class="btn-sair" onclick="sair()">Sair</button>
+        </div>
+      </div>
+
+      <!-- Ações rápidas -->
+      <p class="perfil-section-title">Acesso rápido</p>
+      <div class="acoes-grid mb-4">
+        <a href="./comparacao.html" class="acao-card">
+          <span class="acao-icon">🏷️</span>
+          <span class="acao-label">Ver Ofertas</span>
+        </a>
+        <a href="./listas.html" class="acao-card">
+          <span class="acao-icon">📋</span>
+          <span class="acao-label">Minhas Listas</span>
+        </a>
+        <a href="./notificacoes.html" class="acao-card">
+          <span class="acao-icon">🔔</span>
+          <span class="acao-label">Notificações</span>
+        </a>
+        <a href="./categorias.html" class="acao-card">
+          <span class="acao-icon">🗂️</span>
+          <span class="acao-label">Categorias</span>
+        </a>
+        <a href="./cadastro_afiliado.html" class="acao-card">
+          <span class="acao-icon">🤝</span>
+          <span class="acao-label">Seja Afiliado</span>
+        </a>
+        <a href="./fale_conosco.html" class="acao-card">
+          <span class="acao-icon">💬</span>
+          <span class="acao-label">Fale Conosco</span>
+        </a>
+      </div>
+
+      <!-- Dados da conta -->
+      <p class="perfil-section-title">Dados da conta</p>
+      <div class="info-card mb-4">
+        <div class="info-row">
+          <span class="info-row-label">Nome</span>
+          <span class="info-row-value" id="infoNome">—</span>
+        </div>
+        <div class="info-row">
+          <span class="info-row-label">Email</span>
+          <span class="info-row-value" id="infoEmail">—</span>
+        </div>
+        <div class="info-row">
+          <span class="info-row-label">CPF</span>
+          <span class="info-row-value" id="infoCpf">—</span>
+        </div>
+        <div class="info-row">
+          <span class="info-row-label">Membro desde</span>
+          <span class="info-row-value" id="infoMembro">—</span>
+        </div>
+      </div>
+
+      <!-- Listas salvas (placeholder) -->
+      <p class="perfil-section-title">Listas salvas</p>
+      <div id="listasContainer">
+        <div class="lista-item">
+          <div>
+            <div class="lista-item-nome">🛒 Compras do mês</div>
+            <div class="lista-item-meta">8 itens · atualizada há 2 dias</div>
+          </div>
+          <span class="lista-item-tag">Mensal</span>
+        </div>
+        <div class="lista-item">
+          <div>
+            <div class="lista-item-nome">🥗 Dieta semanal</div>
+            <div class="lista-item-meta">5 itens · atualizada hoje</div>
+          </div>
+          <span class="lista-item-tag">Semanal</span>
+        </div>
+        <div class="lista-item">
+          <div>
+            <div class="lista-item-nome">🎉 Churrasco</div>
+            <div class="lista-item-meta">12 itens · atualizada há 5 dias</div>
+          </div>
+          <span class="lista-item-tag">Evento</span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-nav">
+      <div>
+        <span class="footer-title">Destaques</span>
+        <ul>
+          <li><a href="./login_cadastro.html">Login / Cadastro</a></li>
+          <li><a href="./comparacao.html">Comparação</a></li>
+        </ul>
+      </div>
+      <div>
+        <span class="footer-title">Mercadez</span>
+        <ul>
+          <li><a href="./sobre.html">Sobre nós</a></li>
+          <li><a href="./cadastro_afiliado.html">Seja Afiliado</a></li>
+        </ul>
+      </div>
+      <div>
+        <span class="footer-title">Entre em contato</span>
+        <a href="./fale_conosco.html">
+          <button class="btn-footer">Fale conosco</button>
+        </a>
+        <div class="logos mt-2">
+          <a href="#"><img src="./images/icons/WhatsApp.svg.png" alt="WhatsApp"></a>
+          <a href="#"><img src="./images/icons/Instagram_icon.png.webp" alt="Instagram"></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="./js/api.js"></script>
+<script src="./js/busca.js"></script>
+
+<script>
+  function abrirMenu() { document.getElementById('menuLateral').classList.add('ativo'); }
+  function fecharMenu() { document.getElementById('menuLateral').classList.remove('ativo'); }
+
+  // ── Carrega dados do usuário logado ──
+  function carregarPerfil() {
+    const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || 'null');
+
+    if (!usuario) {
+      // Não está logado, redireciona para login
+      window.location.href = './login_cadastro.html';
+      return;
+    }
+
+    const nome  = usuario.nome  || usuario.name  || 'Usuário';
+    const email = usuario.email || '—';
+    const cpf   = usuario.cpf   || '—';
+
+    // Avatar: primeira letra do nome
+    document.getElementById('avatarInicial').textContent = nome.charAt(0).toUpperCase();
+
+    // Hero
+    document.getElementById('nomeUsuario').textContent  = nome;
+    document.getElementById('emailUsuario').textContent = email;
+
+    // Dados da conta
+    document.getElementById('infoNome').textContent  = nome;
+    document.getElementById('infoEmail').textContent = email;
+    document.getElementById('infoCpf').textContent   = cpf ? mascararCpf(cpf) : '—';
+
+    // Data de cadastro (se armazenada)
+    const dataCadastro = usuario.dataCadastro
+      ? new Date(usuario.dataCadastro).toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })
+      : 'Junho de 2025';
+    document.getElementById('infoMembro').textContent = dataCadastro;
+  }
+
+  function mascararCpf(cpf) {
+    const limpo = cpf.replace(/\D/g, '');
+    if (limpo.length !== 11) return cpf;
+    return `***.${limpo.slice(3,6)}.${limpo.slice(6,9)}-**`;
+  }
+
+  function sair() {
+    if (confirm('Deseja realmente sair da sua conta?')) {
+      localStorage.removeItem('usuarioLogado');
+      window.location.href = './login_cadastro.html';
+    }
+  }
+
+  carregarPerfil();
+</script>
+
+</body>
+</html>
