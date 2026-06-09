@@ -8,12 +8,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   const form = document.getElementById("formProduto");
   if (!form) return;
 
-  const afiliadoStr = sessionStorage.getItem("afiliado");
-  if (!afiliadoStr) {
-    mostrarToast("Faça login como afiliado primeiro.", "aviso");
-    setTimeout(() => (window.location.href = "./login_cadastro.html"), 1800);
-    return;
-  }
+  // const afiliadoStr = sessionStorage.getItem("afiliado");
+  // if (!afiliadoStr) {
+  //   mostrarToast("Faça login como afiliado primeiro.", "aviso");
+  //   setTimeout(() => (window.location.href = "./login_cadastro.html"), 1800);
+  //   return;
+  // }
 
   const afiliado = JSON.parse(afiliadoStr);
   await carregarProdutos(afiliado);
