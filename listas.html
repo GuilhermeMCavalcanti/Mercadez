@@ -80,7 +80,7 @@
       </div>
 
       <!-- Alerta para não logados -->
-      <div id="alerta-login" class="auth-card text-center mb-4">
+      <div id="alerta-login" class="auth-card text-center mb-4" style="display:none">
         <p class="alerta-login-icon">🔒</p>
         <h2 class="alerta-login-titulo">Faça login para ver suas listas</h2>
         <p class="subtitle">Você precisa estar logado para gerenciar seus produtos.</p>
@@ -90,7 +90,7 @@
       </div>
 
       <!-- Card principal da lista -->
-      <div id="conteudo-listas" class="auth-card">
+      <div id="conteudo-listas" class="auth-card" style="display:none">
 
         <!-- Cabeçalho com título e botão -->
         <div class="listas-header">
@@ -190,10 +190,11 @@
     const usuario = getUsuario();
 
     if (!usuario) {
-      document.getElementById('conteudo-listas').style.display = 'none';
-      document.getElementById('alerta-login').style.display    = 'block';
+      document.getElementById('alerta-login').style.display = 'block';
       return;
     }
+
+    document.getElementById('conteudo-listas').style.display = 'block';
 
     // Personaliza título com o primeiro nome
     const nomeMercado = document.getElementById('nome-mercado');
