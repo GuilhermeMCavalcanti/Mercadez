@@ -191,6 +191,10 @@
 
       localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
 
+      /* 5. Redirecionar conforme o cargo */
+      if (perfil === 'AFILIADO') {
+        window.location.href = './perfil.html';
+      }
 
     } catch (err) {
       const emailErr = document.getElementById('login-email-error');
