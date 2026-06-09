@@ -197,7 +197,7 @@
 
       /* 5. Redirecionar conforme o cargo */
       if (perfil === 'AFILIADO') {
-        window.location.href = './perfil_afiliado.html';
+        window.location.href = './perfil.html';
       } else {
         window.location.href = './perfil.html';
       }
