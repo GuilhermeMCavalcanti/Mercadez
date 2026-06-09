@@ -3,10 +3,11 @@
  *
  * Fluxo:
  *  1. Usuário submete o formulário de login.
- *  2. POST /usuarios/login  → recebe { token, tipo, id, nome, email, ... }
- *  3. GET  /usuarios/me     → recebe { id, nome, email, cpf, criadoEm, ... }
- *  4. Salva objeto completo em localStorage com a chave "usuarioLogado".
- *  5. Redireciona para perfil.html.
+ *  2. Tenta POST /usuarios/login
+ *     → Se ok: salva como usuário e redireciona para perfil.html
+ *  3. Se falhar (401), tenta POST /afiliados/login
+ *     → Se ok: salva como afiliado e redireciona para perfil_afiliado.html
+ *  4. Se ambos falharem, exibe erro de credenciais.
  */
 
 (function () {
@@ -75,25 +76,38 @@
 
   /* ── Requisições ao backend ── */
 
-  async function postLogin(email, senha) {
+  // Tenta logar como usuário comum — retorna null se credenciais inválidas (401)
+  async function tentarLoginUsuario(email, senha) {
     const res = await fetch(API_BASE + '/usuarios/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: email, senha: senha }),
     });
 
+    if (res.status === 401) return null;
+
     const data = await res.json();
-
-    if (!res.ok) {
-      // O backend retorna { mensagem: "..." } nos erros
-      const msg = data.mensagem || 'Credenciais inválidas.';
-      throw new Error(msg);
-    }
-
-    return data; // { token, tipo, perfil, id, nome, email }
+    if (!res.ok) throw new Error(data.mensagem || 'Erro ao conectar.');
+    return { ...data, tipo: 'USUARIO' };
   }
 
-  async function getMe(token) {
+  // Tenta logar como afiliado — retorna null se credenciais inválidas (401)
+  async function tentarLoginAfiliado(email, senha) {
+    const res = await fetch(API_BASE + '/afiliados/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, senha: senha }),
+    });
+
+    if (res.status === 401) return null;
+
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.mensagem || 'Erro ao conectar.');
+    return { ...data, tipo: 'AFILIADO' };
+  }
+
+  // Busca dados completos do usuário logado
+  async function getMeUsuario(token) {
     const res = await fetch(API_BASE + '/usuarios/me', {
       method: 'GET',
       headers: {
@@ -101,13 +115,21 @@
         'Authorization': 'Bearer ' + token,
       },
     });
+    if (!res.ok) return null;
+    return await res.json();
+  }
 
-    if (!res.ok) {
-      // Falha silenciosa: retorna null e usaremos só os dados do login
-      return null;
-    }
-
-    return await res.json(); // { id, nome, email, cpf, criadoEm, perfil }
+  // Busca dados completos do afiliado logado
+  async function getMeAfiliado(token) {
+    const res = await fetch(API_BASE + '/afiliados/me', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token,
+      },
+    });
+    if (!res.ok) return null;
+    return await res.json();
   }
 
   /* ── Handler principal do formulário ── */
@@ -127,44 +149,59 @@
     setSubmitLoading(btnEl, true);
 
     try {
-      /* 1. Autenticar */
-      const loginData = await postLogin(emailEl.value.trim(), senhaEl.value);
+      const email = emailEl.value.trim();
+      const senha = senhaEl.value;
 
-      /* 2. Buscar dados completos (cpf, criadoEm) */
-      const meData = await getMe(loginData.token);
+      /* 1. Tenta como usuário comum */
+      let loginData = await tentarLoginUsuario(email, senha);
+      let perfil = 'USUARIO';
+      let meData = null;
 
-      /* 3. Montar objeto compatível com perfil.html */
+      if (loginData) {
+        /* Usuário encontrado */
+        meData = await getMeUsuario(loginData.token);
+      } else {
+        /* 2. Tenta como afiliado */
+        loginData = await tentarLoginAfiliado(email, senha);
+        if (loginData) {
+          perfil = 'AFILIADO';
+          meData = await getMeAfiliado(loginData.token);
+        }
+      }
+
+      /* 3. Se nenhum funcionou, credenciais inválidas */
+      if (!loginData) {
+        const senhaErr = document.getElementById('login-senha-error');
+        setFieldError(senhaEl, senhaErr, 'E-mail ou senha incorretos.');
+        return;
+      }
+
+      /* 4. Montar objeto e salvar no localStorage */
       const usuario = {
-        id:           meData ? meData.id           : loginData.id,
-        nome:         meData ? meData.nome          : loginData.nome,
-        email:        meData ? meData.email         : loginData.email,
-        cpf:          meData ? meData.cpf           : null,
-        perfil:       meData ? meData.perfil        : loginData.perfil,
-        dataCadastro: meData ? meData.criadoEm      : null,
+        id:           meData ? meData.id          : loginData.id,
+        nome:         meData ? meData.nome         : loginData.nome,
+        email:        meData ? meData.email        : loginData.email,
+        cpf:          meData ? meData.cpf          : null,
+        cnpj:         meData ? meData.cnpj         : null,
+        perfil:       perfil,
+        dataCadastro: meData ? meData.criadoEm     : null,
         token:        loginData.token,
         tokenTipo:    loginData.tipo,
       };
 
-      /* 4. Persistir no localStorage */
       localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
 
-      /* 5. Redirecionar para o perfil */
-      window.location.href = './perfil.html';
+      /* 5. Redirecionar conforme o cargo */
+      if (perfil === 'AFILIADO') {
+        window.location.href = './perfil_afiliado.html';
+      } else {
+        window.location.href = './perfil.html';
+      }
 
     } catch (err) {
-      /* Erros de credenciais ou de rede */
       const emailErr = document.getElementById('login-email-error');
-      const senhaErr = document.getElementById('login-senha-error');
-
-      const msg = err.message || 'Não foi possível conectar ao servidor.';
-
-      // Mensagens de credenciais → exibe no campo senha
-      if (/credencial|senha|e-mail|email|inválid/i.test(msg)) {
-        setFieldError(senhaEl, senhaErr, msg);
-      } else {
-        // Erros genéricos (rede, servidor) → exibe no campo email
-        setFieldError(emailEl, emailErr, msg);
-      }
+      setFieldError(emailEl, emailErr, 'Não foi possível conectar ao servidor.');
+      console.error('[Login]', err);
     } finally {
       setSubmitLoading(btnEl, false);
     }
