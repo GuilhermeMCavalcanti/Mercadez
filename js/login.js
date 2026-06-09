@@ -177,12 +177,16 @@
       }
 
       /* 4. Montar objeto e salvar no localStorage */
+      const nomeAfiliado = meData ? (meData.nome_proprietario || meData.nome) : loginData.nome;
+      const nomeUsuario  = meData ? meData.nome : loginData.nome;
+
       const usuario = {
         id:           meData ? meData.id          : loginData.id,
-        nome:         meData ? meData.nome         : loginData.nome,
+        nome:         perfil === 'AFILIADO' ? nomeAfiliado : nomeUsuario,
         email:        meData ? meData.email        : loginData.email,
         cpf:          meData ? meData.cpf          : null,
         cnpj:         meData ? meData.cnpj         : null,
+        mercado:      meData ? meData.mercado       : null,
         perfil:       perfil,
         dataCadastro: meData ? meData.criadoEm     : null,
         token:        loginData.token,
@@ -193,14 +197,20 @@
 
       /* 5. Redirecionar conforme o cargo */
       if (perfil === 'AFILIADO') {
-        window.location.href = './perfil.html';
+        window.location.href = './perfil_afiliado.html';
       } else {
         window.location.href = './perfil.html';
       }
 
     } catch (err) {
       const emailErr = document.getElementById('login-email-error');
-      setFieldError(emailEl, emailErr, 'Não foi possível conectar ao servidor.');
+      const senhaErr = document.getElementById('login-senha-error');
+      const msg = err.message || '';
+      if (/credencial|senha|e-mail|email|inválid|401/i.test(msg)) {
+        setFieldError(senhaEl, senhaErr, 'E-mail ou senha incorretos.');
+      } else {
+        setFieldError(emailEl, emailErr, 'Não foi possível conectar ao servidor.');
+      }
       console.error('[Login]', err);
     } finally {
       setSubmitLoading(btnEl, false);
