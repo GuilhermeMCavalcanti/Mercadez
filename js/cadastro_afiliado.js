@@ -3,8 +3,7 @@
 // Form ID : #formAfiliado
 // Input IDs: #af-nomeProprietario, #af-email, #af-cnpj,
 //            #af-endereco, #af-telefone, #af-mercado,
-//            #af-categoria, #af-funcionarios,
-//            #af-pagamento, #af-senha
+//            #af-categoria, #af-funcionarios, #af-senha
 // Endpoint : POST /afiliados
 // =============================================================
 
@@ -234,7 +233,6 @@
       mercado:          form.querySelector('#af-mercado'),
       categoria:        form.querySelector('#af-categoria'),
       funcionarios:     form.querySelector('#af-funcionarios'),
-      pagamento:        form.querySelector('#af-pagamento'),
       senha:            form.querySelector('#af-senha'),
     };
 
@@ -272,7 +270,6 @@
         mercado:           fields.mercado.value.trim(),
         categoria:         fields.categoria.value.trim(),
         funcionarios:      fields.funcionarios.value ? parseInt(fields.funcionarios.value) : null,
-        pagamento:         fields.pagamento.value.trim(),
         senha:             fields.senha.value,
       };
 
