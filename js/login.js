@@ -13,7 +13,7 @@
   'use strict';
 
   /* ── Configuração ── */
-  const API_BASE = 'https://mercadez-backend-0gah.onrender.com/';
+  const API_BASE = 'https://mercadez-backend-0gah.onrender.com';
 
   /* ── Utilitários de UI ── */
 
