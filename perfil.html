@@ -245,12 +245,14 @@
         <div class="menu-lateral-btn" onclick="abrirMenu()">☰</div>
         <ul>
           <li><a href="./comparacao.html">Ofertas</a></li>
+          <li><a href="./categorias.html">Categorias</a></li>
         </ul>
         <div class="pesquisa">
           <input type="text" placeholder="Buscar...">
         </div>
         <ul>
           <li><a href="./notificacoes.html">Notificações</a></li>
+          <li><a href="./listas.html">Listas</a></li>
         </ul>
       </nav>
     </div>
@@ -409,11 +411,10 @@
   function carregarPerfil() {
     const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || 'null');
 
-    // if (!usuario) {
-    //   // Não está logado, redireciona para login
-    //   window.location.href = './login_cadastro.html';
-    //   return;
-    // }
+    if (!usuario) {
+      window.location.href = './login_cadastro.html';
+      return;
+    }
 
     const nome  = usuario.nome  || usuario.name  || 'Usuário';
     const email = usuario.email || '—';
@@ -454,5 +455,6 @@
   carregarPerfil();
 </script>
 
+<script src="./js/auth.js"></script>
 </body>
 </html>
