@@ -49,7 +49,7 @@
         </div>
         <ul>
           <li><a href="./notificacoes.html">Notificações</a></li>
-          <li><a href="./listas.html" style="color:#000; text-decoration:underline;">Listas</a></li>
+          <li><a href="./listas.html" class="nav-link-ativo">Listas</a></li>
         </ul>
       </nav>
     </div>
@@ -71,20 +71,20 @@
 
   <!-- ===== MAIN ===== -->
   <main class="flex-grow-1 auth-section">
-    <div class="container" style="max-width: 900px;">
+    <div class="container listas-container">
 
       <!-- Título -->
       <div class="text-center mb-4">
-        <h1 class="fw-bold" style="font-size:22px; color:#333;">Minhas Listas</h1>
-        <p style="color:#888; font-size:14px;">Gerencie seus produtos e acompanhe preços.</p>
+        <h1 class="fw-bold listas-page-title">Minhas Listas</h1>
+        <p class="listas-page-subtitle">Gerencie seus produtos e acompanhe preços.</p>
       </div>
 
       <!-- Alerta para não logados -->
       <div id="alerta-login" class="auth-card text-center mb-4">
-        <p style="font-size:32px; margin-bottom:12px;">🔒</p>
-        <h2 style="font-size:20px; margin-bottom:8px;">Faça login para ver suas listas</h2>
-        <p class="subtitle" style="margin-bottom:24px;">Você precisa estar logado para gerenciar seus produtos.</p>
-        <a href="./login_cadastro.html" class="btn-mercadez btn-amarelo" style="max-width:220px; margin:0 auto;">
+        <p class="alerta-login-icon">🔒</p>
+        <h2 class="alerta-login-titulo">Faça login para ver suas listas</h2>
+        <p class="subtitle">Você precisa estar logado para gerenciar seus produtos.</p>
+        <a href="./login_cadastro.html" class="btn-mercadez btn-amarelo alerta-login-btn">
           Ir para o Login
         </a>
       </div>
@@ -106,7 +106,7 @@
         </div>
 
         <!-- Tabela -->
-        <div style="overflow-x: auto;">
+        <div class="tabela-scroll">
           <table class="tabela-listas" id="tabelaProdutos">
             <thead>
               <tr>
@@ -123,10 +123,10 @@
           </table>
 
           <!-- Estado vazio -->
-          <div class="tabela-vazia" id="lista-vazia" style="display:none;">
+          <div class="tabela-vazia lista-vazia-oculto" id="lista-vazia">
             <span>🛒</span>
             Nenhum produto na lista ainda.<br>
-            <a href="./cadastro_produtos.html" style="color:var(--amarelo); font-weight:700;">Adicione o primeiro produto</a>
+            <a href="./cadastro_produtos.html" class="listas-link-destaque">Adicione o primeiro produto</a>
           </div>
         </div>
 
@@ -177,76 +177,76 @@
 
   const API_BASE = 'https://mercadez-backend-0gah.onrender.com';
 
-  // ── Verifica sessão ──────────────────────────────────────────────
-  const token   = localStorage.getItem('mercadez_token');
-  const usuario = JSON.parse(localStorage.getItem('mercadez_usuario') || 'null');
+  // ── Sessão via auth.js (chave: usuarioLogado) ────────────────────
+  function getUsuario() {
+    try {
+      return JSON.parse(localStorage.getItem('usuarioLogado') || 'null');
+    } catch (e) {
+      return null;
+    }
+  }
 
-  if (!token || !usuario) {
-    // Não logado: esconde tabela, mostra aviso
-    document.getElementById('conteudo-listas').style.display = 'none';
-    document.getElementById('alerta-login').style.display    = 'block';
-  } else {
-    // Logado: atualiza link do header e nome do mercado
-    const navLogin = document.getElementById('nav-login-link');
-    if (navLogin) {
-      navLogin.textContent = usuario.nome ? usuario.nome.split(' ')[0] : 'Perfil';
-      navLogin.href = './perfil.html';
+  document.addEventListener('DOMContentLoaded', function () {
+    const usuario = getUsuario();
+
+    if (!usuario) {
+      document.getElementById('conteudo-listas').style.display = 'none';
+      document.getElementById('alerta-login').style.display    = 'block';
+      return;
     }
 
+    // Personaliza título com o primeiro nome
     const nomeMercado = document.getElementById('nome-mercado');
     if (nomeMercado && usuario.nome) {
       nomeMercado.textContent = `Lista de ${usuario.nome.split(' ')[0]}`;
     }
 
-    carregarProdutos();
-  }
+    carregarProdutos(usuario);
+  });
 
   // ── Carrega produtos via API ─────────────────────────────────────
-  async function carregarProdutos() {
-    const tbody = document.getElementById('tbody-lista');
-    const vazio = document.getElementById('lista-vazia');
-    const contador = document.getElementById('contador-itens');
+  async function carregarProdutos(usuario) {
+    const tbody   = document.getElementById('tbody-lista');
 
     tbody.innerHTML = `
       <tr>
-        <td colspan="5" style="text-align:center; color:var(--text-muted); padding:32px;">
-          Carregando...
+        <td colspan="5" class="tabela-vazia">
+          <span>⏳</span>Carregando...
         </td>
       </tr>`;
 
     try {
-      const res = await fetch(`${API_BASE}/listas`, {
-        headers: { 'Authorization': `Bearer ${token}` }
-      });
+      const token = usuario.token || null;
+      const headers = { 'Content-Type': 'application/json' };
+      if (token) headers['Authorization'] = `Bearer ${token}`;
+
+      const res = await fetch(`${API_BASE}/listas`, { headers });
 
       if (res.status === 401) {
-        localStorage.removeItem('mercadez_token');
-        localStorage.removeItem('mercadez_usuario');
+        localStorage.removeItem('usuarioLogado');
         window.location.href = './login_cadastro.html';
         return;
       }
 
       const produtos = res.ok ? await res.json() : [];
-
       renderizarTabela(produtos);
 
     } catch (err) {
-      // Sem API: renderiza lista vazia com mensagem
-      console.warn('API indisponível:', err);
+      console.warn('API indisponível, exibindo lista vazia.', err);
       renderizarTabela([]);
     }
   }
 
   // ── Renderiza tabela ─────────────────────────────────────────────
   function renderizarTabela(produtos) {
-    const tbody   = document.getElementById('tbody-lista');
-    const vazio   = document.getElementById('lista-vazia');
+    const tbody    = document.getElementById('tbody-lista');
+    const vazio    = document.getElementById('lista-vazia');
     const contador = document.getElementById('contador-itens');
 
     contador.textContent = `${produtos.length} ${produtos.length === 1 ? 'item' : 'itens'}`;
 
     if (!produtos.length) {
-      tbody.innerHTML = '';
+      tbody.innerHTML  = '';
       vazio.style.display = 'block';
       return;
     }
@@ -255,14 +255,14 @@
     tbody.innerHTML = produtos.map(p => `
       <tr>
         <td>
-          <div style="font-weight:700; color:var(--dark);">${p.nome || '—'}</div>
-          ${p.marca ? `<div style="font-size:12px; color:var(--text-muted);">${p.marca}</div>` : ''}
+          <div class="tabela-listas-nome">${p.nome || '—'}</div>
+          ${p.marca ? `<div class="tabela-listas-marca">${p.marca}</div>` : ''}
         </td>
         <td><span class="badge-categoria">${p.categoria || '—'}</span></td>
         <td><span class="preco-destaque">R$ ${formatarPreco(p.preco)}</span></td>
-        <td style="font-weight:600;">${p.quantidade ?? 1}</td>
+        <td class="tabela-listas-qtd">${p.quantidade ?? 1}</td>
         <td>
-          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <div class="tabela-listas-acoes">
             <button class="btn-acao" onclick="editarProduto('${p.id}')">Editar</button>
             <button class="btn-acao excluir" onclick="excluirProduto('${p.id}', this)">Excluir</button>
           </div>
@@ -284,29 +284,36 @@
   async function excluirProduto(id, btn) {
     if (!confirm('Remover este produto da lista?')) return;
 
-    btn.disabled = true;
+    btn.disabled    = true;
     btn.textContent = '...';
+
+    const usuario = getUsuario();
+    const headers = { 'Content-Type': 'application/json' };
+    if (usuario && usuario.token) headers['Authorization'] = `Bearer ${usuario.token}`;
 
     try {
       const res = await fetch(`${API_BASE}/listas/${id}`, {
         method: 'DELETE',
-        headers: { 'Authorization': `Bearer ${token}` }
+        headers
       });
 
       if (res.ok || res.status === 204) {
-        carregarProdutos();
+        carregarProdutos(usuario);
       } else {
         alert('Não foi possível remover o produto.');
-        btn.disabled = false;
+        btn.disabled    = false;
         btn.textContent = 'Excluir';
       }
     } catch (err) {
       alert('Erro ao conectar com o servidor.');
-      btn.disabled = false;
+      btn.disabled    = false;
       btn.textContent = 'Excluir';
     }
   }
 </script>
+
+<!-- auth.js: atualiza navbar com nome do usuário em todas as páginas -->
+<script src="./js/auth.js"></script>
 
 </body>
 </html>

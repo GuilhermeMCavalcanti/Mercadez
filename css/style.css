@@ -1981,3 +1981,78 @@ footer .logos img {
     border-radius: 16px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
+
+/* ══════════════════════════════════════════
+   LISTAS — classes utilitárias
+══════════════════════════════════════════ */
+
+.tabela-listas-nome {
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.tabela-listas-marca {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.tabela-listas-qtd {
+  font-weight: 600;
+}
+
+.tabela-listas-acoes {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tabela-scroll {
+  overflow-x: auto;
+}
+
+.lista-vazia-oculto {
+  display: none;
+}
+
+.listas-container {
+  max-width: 900px;
+}
+
+.listas-main {
+  padding: 40px 20px 60px;
+}
+
+.listas-page-title {
+  font-size: 22px;
+  color: #333;
+}
+
+.listas-page-subtitle {
+  color: #888;
+  font-size: 14px;
+}
+
+.nav-link-ativo {
+  color: #000;
+  text-decoration: underline;
+}
+
+.alerta-login-icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.alerta-login-titulo {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.alerta-login-btn {
+  max-width: 220px;
+  margin: 0 auto;
+}
+
+.listas-link-destaque {
+  color: var(--amarelo);
+  font-weight: 700;
+}
