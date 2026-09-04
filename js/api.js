@@ -1,2 +1,1 @@
-// URL base do backend
-const API_URL = "https://mercadez-backend-0gah.onrender.com";
+const API_URL = "https://mercadez-backend-production.up.railway.app";
