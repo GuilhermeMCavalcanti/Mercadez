@@ -14,7 +14,7 @@
   'use strict';
 
   /* ── Configuração ── */
-  const API_BASE = 'https://mercadez-backend-0gah.onrender.com';
+  const API_BASE = API_URL; // usa a mesma URL definida em api.js
 
   /* ── Utilitários de UI ── */
 
