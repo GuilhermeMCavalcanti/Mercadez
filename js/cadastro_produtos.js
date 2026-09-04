@@ -8,14 +8,19 @@ document.addEventListener("DOMContentLoaded", async () => {
   const form = document.getElementById("formProduto");
   if (!form) return;
 
-  // const afiliadoStr = sessionStorage.getItem("afiliado");
-  // if (!afiliadoStr) {
-  //   mostrarToast("Faça login como afiliado primeiro.", "aviso");
-  //   setTimeout(() => (window.location.href = "./login_cadastro.html"), 1800);
-  //   return;
-  // }
+  const usuarioStr = localStorage.getItem("usuarioLogado");
+  if (!usuarioStr) {
+    mostrarToast("Faça login como afiliado primeiro.", "aviso");
+    setTimeout(() => (window.location.href = "./login_cadastro.html"), 1800);
+    return;
+  }
 
-  const afiliado = JSON.parse(afiliadoStr);
+  const afiliado = JSON.parse(usuarioStr);
+  if (afiliado.perfil !== "AFILIADO") {
+    mostrarToast("Apenas afiliados podem cadastrar produtos.", "aviso");
+    setTimeout(() => (window.location.href = "./login_cadastro.html"), 1800);
+    return;
+  }
   await carregarProdutos(afiliado);
 
   form.addEventListener("submit", async (e) => {
