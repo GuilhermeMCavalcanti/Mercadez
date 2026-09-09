@@ -51,7 +51,7 @@ Criado para tornar a experiência mais **amigável, próxima e fácil de compree
 Além de representar visualmente o Mercadez, o mascote pode ser utilizado na comunicação com os usuários, apresentando informações, orientando durante a navegação e destacando funcionalidades da plataforma.
 
 <p align="center">
-  <img src="./imagens/icons/precinho_sem_fundo.png" alt="Precinho — Mascote do Mercadez" width="350">
+  <img src="./images/icons/precinho_sem_fundo.png" alt="Precinho — Mascote do Mercadez" width="350">
 </p>
 
 <p align="center">
