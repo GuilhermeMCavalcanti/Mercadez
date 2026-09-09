@@ -1,7 +1,3 @@
-Sim. Vou corrigir principalmente a parte técnica para refletir o projeto atual: **React no frontend e Python + FastAPI no backend**, além de dar mais destaque ao **Precinho**, que é o mascote do Mercadez.
-
-Também vou manter o README sem emojis. A referência à FATEC pode permanecer, já que a unidade oferece o curso de Análise e Desenvolvimento de Sistemas. ([CPS São Paulo][1])
-
 # Mercadez — Mercado Nota Dez!
 
 <p align="center">
