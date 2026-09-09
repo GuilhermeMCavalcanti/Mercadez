@@ -54,24 +54,10 @@ Além de representar visualmente o Mercadez, o mascote pode ser utilizado na com
   <img src="./images/icons/precinho_sem_fundo.png" alt="Precinho — Mascote do Mercadez" width="350">
 </p>
 
-```text
-                    +----------------------+
-                    |       MERCADEZ       |
-                    |    Mercado Nota Dez  |
-                    +----------+-----------+
-                               |
-                               v
-                    +----------------------+
-                    |      PRECINHO        |
-                    | Mascote da plataforma|
-                    +----------+-----------+
-                               |
-             +-----------------+-----------------+
-             |                                   |
-             v                                   v
-      Ajuda o consumidor                 Aproxima o usuário
-      na busca por preços                da plataforma
-```
+<p align="center">
+  <strong>Precinho</strong><br>
+  Mascote oficial do Mercadez
+</p>
 
 ---
 
