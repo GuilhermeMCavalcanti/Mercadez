@@ -18,6 +18,70 @@
 
 ---
 
+### Quem somos
+
+<div align="center">
+
+<table>
+  <tr>
+    <td align="center" width="33%">
+      <a href="https://github.com/Tiasgod">
+        <img src="https://avatars.githubusercontent.com/Tiasgod" width="100px" style="border-radius:50%;border:3px solid #6B21D0;" alt="Tiago Dias"/>
+        <br/>
+        <sub><b>Tiago Dias</b></sub>
+      </a>
+      <br/>
+      <sub>Back-End - Engenheiro de IA</sub>
+      <br/><br/>
+      <a href="https://github.com/Tiasgod">
+        <img src="https://img.shields.io/badge/GitHub-000000?style=flat-square&logo=github&logoColor=FFD84C"/>
+      </a>
+      &nbsp;
+      <a href="https://www.linkedin.com/in/tiagopdias-02-2004-ti/">
+        <img src="https://img.shields.io/badge/LinkedIn-6B21D0?style=flat-square&logo=linkedin&logoColor=FFD84C"/>
+      </a>
+    </td>
+
+    <td align="center" width="33%">
+      <a href="https://github.com/leonardobarca">
+        <img src="https://avatars.githubusercontent.com/leonardobarca" width="100px" style="border-radius:50%;border:3px solid #6B21D0;" alt="Leonardo Barca"/>
+        <br/>
+        <sub><b>Leonardo Barca</b></sub>
+      </a>
+      <br/>
+      <sub>Full-Stack</sub>
+      <br/><br/>
+      <a href="https://github.com/leonardobarca">
+        <img src="https://img.shields.io/badge/GitHub-000000?style=flat-square&logo=github&logoColor=FFD84C"/>
+      </a>
+      &nbsp;
+      <a href="https://www.linkedin.com/in/leonardobarca/">
+        <img src="https://img.shields.io/badge/LinkedIn-6B21D0?style=flat-square&logo=linkedin&logoColor=FFD84C"/>
+      </a>
+    </td>
+
+    <td align="center" width="33%">
+      <a href="https://github.com/GuilhermeMCavalcanti">
+        <img src="https://avatars.githubusercontent.com/GuilhermeMCavalcanti" width="100px" style="border-radius:50%;border:3px solid #6B21D0;" alt="Guilherme Cavalcanti"/>
+        <br/>
+        <sub><b>Guilherme Cavalcanti</b></sub>
+      </a>
+      <br/>
+      <sub>UI/UX Design - Front-End</sub>
+      <br/><br/>
+      <a href="https://github.com/GuilhermeMCavalcanti">
+        <img src="https://img.shields.io/badge/GitHub-000000?style=flat-square&logo=github&logoColor=FFD84C"/>
+      </a>
+      &nbsp;
+      <a href="https://www.linkedin.com/in/guilhermecavalcanti2005/">
+        <img src="https://img.shields.io/badge/LinkedIn-6B21D0?style=flat-square&logo=linkedin&logoColor=FFD84C"/>
+      </a>
+    </td>
+  </tr>
+</table>
+
+</div>
+
 ## Sobre o projeto
 
 O **Mercadez — Mercado Nota Dez** é uma plataforma web criada para aproximar **consumidores e pequenos comerciantes**, facilitando a comparação de preços, a divulgação de ofertas e o gerenciamento de produtos.
@@ -376,53 +440,6 @@ A FATEC Ferraz oferece o curso superior de tecnologia em **Análise e Desenvolvi
 O projeto busca transformar conhecimentos adquiridos durante a formação em uma solução aplicável a uma necessidade real: aproximar consumidores de melhores preços e oferecer aos pequenos comerciantes uma ferramenta digital de apoio ao negócio.
 
 ---
-
-### Quem somos
-
-<div align="center">
-
-<table>
-  <tr>
-    <td align="center" width="33%">
-      <a href="https://github.com/Tiasgod">
-        <img src="https://avatars.githubusercontent.com/Tiasgod" width="100px" style="border-radius:50%;border:3px solid #6B21D0;" alt="Tiago Dias"/>
-        <br/><sub><b>Tiago Dias</b></sub>
-      </a>
-      <br/><sub>Back-End - Engenheiro de IA</sub><br/><br/>
-      <a href="https://github.com/Tiasgod"><img src="https://img.shields.io/badge/GitHub-000000?style=flat-square&logo=github&logoColor=FFD84C"/></a>
-      &nbsp;
-      <a href="https://www.linkedin.com/in/tiagopdias-02-2004-ti/"><img src="https://img.shields.io/badge/LinkedIn-6B21D0?style=flat-square&logo=linkedin&logoColor=FFD84C"/></a>
-    </td>
-  </tr>
-    <td align="center" width="33%">
-      <a href="https://github.com/leonardobarca">
-        <img src="https://avatars.githubusercontent.com/leonardobarca" width="100px" style="border-radius:50%;border:3px solid #6B21D0;" alt="Leonardo Barca"/>
-        <br/><sub><b>Leonardo Barca</b></sub>
-      </a>
-      <br/><sub>Full-Stack</sub><br/><br/>
-      <a href="https://github.com/leonardobarca"><img src="https://img.shields.io/badge/GitHub-000000?style=flat-square&logo=github&logoColor=FFD84C"/></a>
-      &nbsp;
-      <a href="https://www.linkedin.com/in/leonardobarca/"><img src="https://img.shields.io/badge/LinkedIn-6B21D0?style=flat-square&logo=linkedin&logoColor=FFD84C"/></a>
-    </td>
-    <td align="center" width="33%">
-      <a href="https://github.com/GuilhermeMCavalcanti">
-        <img src="https://avatars.githubusercontent.com/GuilhermeMCavalcanti" width="100px" style="border-radius:50%;border:3px solid #6B21D0;" alt="Guilherme Cavalcanti"/>
-        <br/><sub><b>Guilherme Cavalcanti</b></sub>
-      </a>
-      <br/><sub>UI/UX Design - Front-End</sub><br/><br/>
-      <a href="https://github.com/GuilhermeMCavalcanti"><img src="https://img.shields.io/badge/GitHub-000000?style=flat-square&logo=github&logoColor=FFD84C"/></a>
-      &nbsp;
-      <a href="https://www.linkedin.com/in/guilhermecavalcanti2005/"><img src="https://img.shields.io/badge/LinkedIn-6B21D0?style=flat-square&logo=linkedin&logoColor=FFD84C"/></a>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-<div align="right"><a href="#readme-top">↑ voltar ao topo</a></div>
-
----
-
 
 ## Impacto esperado
 
