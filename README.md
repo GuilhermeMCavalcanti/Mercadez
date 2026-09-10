@@ -388,7 +388,7 @@ O projeto busca transformar conhecimentos adquiridos durante a formação em uma
         <img src="https://avatars.githubusercontent.com/Tiasgod" width="100px" style="border-radius:50%;border:3px solid #6B21D0;" alt="Tiago Dias"/>
         <br/><sub><b>Tiago Dias</b></sub>
       </a>
-      <br/><sub>Back-End</sub><br/><br/>
+      <br/><sub>Back-End - Engenheiro de IA</sub><br/><br/>
       <a href="https://github.com/Tiasgod"><img src="https://img.shields.io/badge/GitHub-000000?style=flat-square&logo=github&logoColor=FFD84C"/></a>
       &nbsp;
       <a href="https://www.linkedin.com/in/tiagopdias-02-2004-ti/"><img src="https://img.shields.io/badge/LinkedIn-6B21D0?style=flat-square&logo=linkedin&logoColor=FFD84C"/></a>
@@ -399,7 +399,7 @@ O projeto busca transformar conhecimentos adquiridos durante a formação em uma
         <img src="https://avatars.githubusercontent.com/leonardobarca" width="100px" style="border-radius:50%;border:3px solid #6B21D0;" alt="Leonardo Barca"/>
         <br/><sub><b>Leonardo Barca</b></sub>
       </a>
-      <br/><sub>Front-End</sub><br/><br/>
+      <br/><sub>Full-Stack</sub><br/><br/>
       <a href="https://github.com/leonardobarca"><img src="https://img.shields.io/badge/GitHub-000000?style=flat-square&logo=github&logoColor=FFD84C"/></a>
       &nbsp;
       <a href="https://www.linkedin.com/in/leonardobarca/"><img src="https://img.shields.io/badge/LinkedIn-6B21D0?style=flat-square&logo=linkedin&logoColor=FFD84C"/></a>
